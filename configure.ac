@@ -4,6 +4,7 @@
 AC_PREREQ([2.69])
 AC_INIT([morgenlichtctl], [0.1.2], [bennett@piater.name])
 AC_CONFIG_SRCDIR([src/morgenlichtctl.c])
+AC_CONFIG_AUX_DIR(config)
 AM_INIT_AUTOMAKE
 
 # Checks for programs.

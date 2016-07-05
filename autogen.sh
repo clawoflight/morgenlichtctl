@@ -2,4 +2,4 @@
 
 aclocal \
 && automake --add-missing --foreign \
-&& autoconf
+&& autoconf -I config
