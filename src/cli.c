@@ -36,10 +36,10 @@ void init_argtable()
 
     cmd4 = arg_rex1(NULL, NULL, "alarm", NULL, REG_ICASE, NULL);
     cmd4b = arg_rex1(NULL, NULL, "add", NULL, REG_ICASE, NULL);
-    alarm_time = arg_date1("t", "time", "%H:%M:%S", "HH:MM:SS", "The ringing time");
+    alarm_time = arg_date1(NULL, NULL, "%H:%M:%S", "<HH:MM:SS>", "The ringing time");
     alarm_name = arg_str1("n", "name", "<ALARM>", "The name of the alarm");
+    days = arg_rex1("d", "days", "^(Mon)?(Tue)?(Wed)?(Thu)?(Fri)?(Sat)?(Sun)?$", "DayDay", REG_ICASE | REG_EXTENDED, "The weekdays at which the alarm is enabled. String of MonTueWedThuFriSatSun.");
     color_profile = arg_str0("c", "color", "<COLOR>", "The color profile to use.");
     sound_file = arg_str0("s", "sound", "<SOUND>", "The sound to play");
-    days = arg_rex1("d", "days", "((Mon)?(Tue)?(Wed)?(Thu)?(Fri)?(Sat)?(Sun)?)", "DayDay", REG_ICASE, "The weekdays at which the alarm should ring");
     end4 = arg_end(15);
 }

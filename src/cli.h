@@ -13,7 +13,6 @@
 */
 #ifndef MORGENLICHTCTL_CLI_H
 #define MORGENLICHTCTL_CLI_H
-
 /**
 * @file cli.h
 * This file describes the command-line parameters for morgenlichtctl.
@@ -55,7 +54,7 @@ struct arg_str* disable_alarm_name;
 struct arg_end* end3;
 int arg_errors3;
 
-/* SYNTAX: alarm add --time TIME --name NAME --color-profile PROFILE --sound-file SOUND --days DAYDAYDAY */
+/* SYNTAX: alarm add TIME --name NAME --color-profile PROFILE --sound-file SOUND --days DayDay */
 struct arg_rex* cmd4;
 struct arg_rex* cmd4b;
 struct arg_date* alarm_time;

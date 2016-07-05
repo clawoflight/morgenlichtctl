@@ -12,3 +12,67 @@
  along with morgenlichtctl.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "networking.h"
+
+static IPaddress ipaddress; ///< The IP address of the server to connect to
+static TCPsocket server_sock; ///< The TCP socket of the server
+
+int init_networking(char* remote_host)
+{
+    /* Init the libraries that we use */
+    if (SDL_Init(0) == -1) {
+        fprintf(stderr, "SDL_Init: %s\n", SDL_GetError());
+        return 1;
+    }
+    if (SDLNet_Init() == -1) {
+        fprintf(stderr, "SDLNet_Init: %s\n", SDLNet_GetError());
+        return 1;
+    }
+
+    // Resolve the host name of the server
+    if (SDLNet_ResolveHost(&ipaddress, remote_host, MORGENLICHTD_PORT) == -1)
+    {
+        fprintf(stderr, "SDLNet_ResolveHost: %s\n", SDLNet_GetError());
+        return 1;
+    }
+
+    // Connect to the server
+    if ((server_sock = SDLNet_TCP_Open(&ipaddress)) == NULL) {
+        fprintf(stderr, "SDLNet_TCP_Open: %s\n", SDLNet_GetError());
+        return 1;
+    }
+
+    return 0;
+}
+
+int network_write(char* message)
+{
+    int len = strlen(message) + 1; // add one for the terminating NULL
+    int sent = SDLNet_TCP_Send(server_sock, message, len);
+
+    if (sent < len) {
+        fprintf(stderr, "Could not write to the server: %s\n", SDLNet_GetError());
+        // It may be good to disconnect because it is likely invalid now.
+        return 1;
+    }
+
+    return 0;
+}
+
+int network_read(int maxlen, char* buff)
+{
+    if (SDLNet_TCP_Recv(server_sock, buff, maxlen) <= 0) {
+        // An error may have occured, but sometimes you can just ignore it
+        // It may be good to disconnect sock because it is likely invalid now.
+        fprintf(stderr, "Could not read from the server: %s\n", SDLNet_GetError());
+        return 1;
+    }
+
+    return 0;
+}
+
+void term_networking()
+{
+    SDLNet_TCP_Close(server_sock);
+    SDLNet_Quit();
+    SDL_Quit();
+}

@@ -11,13 +11,19 @@
  You should have received a copy of the GNU General Public License
  along with morgenlichtctl.  If not, see <http://www.gnu.org/licenses/>.
 */
+#ifndef VERSION // VERSION is normally set by autoconf
+#define VERSION "unknown"
+#endif
+
 #include "cli.h"
 #include "networking.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdarg.h>
+#include <limits.h>
 
-void cleanup(int count, ...);
+static void cleanup(int count, ...);
 
 int main(int argc, char *argv[])
 {
@@ -29,7 +35,7 @@ int main(int argc, char *argv[])
     void* argtable1[] = {cmd1, list, end1};
     void* argtable2[] = {cmd2, cmd2b, enable_alarm_name, end2};
     void* argtable3[] = {cmd3, cmd3b, disable_alarm_name, end3};
-    void* argtable4[] = {cmd4, cmd4b, alarm_time, alarm_name, color_profile, sound_file, days, end4};
+    void* argtable4[] = {cmd4, cmd4b, alarm_time, alarm_name, days, color_profile, sound_file, end4};
 
     /* Check for problems */
     if (arg_nullcheck(argtable0) ||
@@ -49,11 +55,34 @@ int main(int argc, char *argv[])
     arg_errors3 = arg_parse(argc, argv, argtable3);
     arg_errors4 = arg_parse(argc, argv, argtable4);
 
-    // TODO: Init TCP connection
-
+    int status = EXIT_SUCCESS;
     /* Work and handle errors */
-    if (arg_errors0 == 0)
-        ; // TODO: Perform the corresponding action
+    if (version->count >0 || help->count >0) { // --help | --version
+
+        if (version->count)
+            printf("morgenlichtctl %s\n", VERSION);
+        else {
+            printf("usage 0: %s ", argv[0]);
+            arg_print_syntax(stdout, argtable0, "\n");
+            arg_print_glossary(stdout, argtable0, " %-25s %s\n");
+
+            printf("\nusage 1: %s ", argv[0]);
+            arg_print_syntax(stdout, argtable1, "\n");
+            arg_print_glossary(stdout, argtable1, " %-25s %s\n");
+
+            printf("\nusage 2: %s ", argv[0]);
+            arg_print_syntax(stdout, argtable2, "\n");
+            arg_print_glossary(stdout, argtable2, " %-25s %s\n");
+
+            printf("\nusage 3: %s ", argv[0]);
+            arg_print_syntax(stdout, argtable3, "\n");
+            arg_print_glossary(stdout, argtable3, " %-25s %s\n");
+
+            printf("\nusage 4: %s ", argv[0]);
+            arg_print_syntax(stdout, argtable4, "\n");
+            arg_print_glossary(stdout, argtable4, " %-25s %s\n");
+        }
+    }
     else if (arg_errors1 == 0)
         ; // TODO: Perform the corresponding action
     else if (arg_errors2 == 0)
@@ -62,21 +91,29 @@ int main(int argc, char *argv[])
         ; // TODO: Perform the corresponding action
     else if (arg_errors4 == 0)
         ; // TODO: Perform the corresponding action
-    // No command was correct
-    // TODO: find the syntax with the least errors and show those
+
+    // No command was correct: show the appropriate error message.
     else {
-        //arg_print_errors(stdout, end1, argv[0]);
-        printf("usage 0: %s ", argv[0]); arg_print_syntaxv(stdout, argtable0, "\n");
-        printf("usage 1: %s ", argv[0]); arg_print_syntaxv(stdout, argtable1, "\n");
-        printf("usage 2: %s ", argv[0]); arg_print_syntaxv(stdout, argtable2, "\n");
-        printf("usage 3: %s ", argv[0]); arg_print_syntaxv(stdout, argtable3, "\n");
-        printf("usage 4: %s ", argv[0]); arg_print_syntaxv(stdout, argtable4, "\n");
+        if (cmd4b->count > 0)
+            arg_print_errors(stderr, end4, argv[0]);
+        else if (cmd3b->count > 0)
+            arg_print_errors(stderr, end3, argv[0]);
+        else if (cmd2b->count > 0)
+            arg_print_errors(stderr, end2, argv[0]);
+        else if (list->count > 0)
+            arg_print_errors(stderr, end1, argv[0]);
+
+        else { // morgenlichtctl was called without arguments
+            fprintf(stderr, "usage: %s", argv[0]);
+            arg_print_syntaxv(stderr, argtable0, "\n");
+        }
+        status = EXIT_FAILURE;
     }
 
     /* Clean up :) */
     cleanup(5, argtable0, argtable1, argtable2, argtable3, argtable4);
 
-    return EXIT_SUCCESS;
+    return status;
 }
 
 void cleanup(int count, ...)
@@ -91,6 +128,4 @@ void cleanup(int count, ...)
     }
 
     va_end(arguments);
-
-    // TODO: close TCP connection
 }
