@@ -1,0 +1,6 @@
+{
+  "name": "Morgenlichtctl",
+  "tagline": "A simple command-line client for morgenlichtd, written in C.",
+  "body": "# TODO\r\nTODO\r\n\r\nThe documentation is available [here](/doc/index.html).",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
