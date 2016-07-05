@@ -11,9 +11,13 @@
  You should have received a copy of the GNU General Public License
  along with morgenlichtctl.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef VERSION // VERSION is normally set by autoconf
-#define VERSION "unknown"
+#ifndef VERSION
+#define VERSION "unknown" ///< VERSION is normally set by autoconf
 #endif
+/**
+ * @file morgenlichtctl.c
+ * The primary file. This produces the command-line program.
+ */
 
 #include "cli.h"
 #include "networking.h"
@@ -25,6 +29,14 @@
 
 static void cleanup(int count, ...);
 
+/**
+ * The entry point.
+ *
+ * @param  argc number of arguments
+ * @param  argv argument array
+ *
+ * @return      0 on success, and 1 otherwise.
+ */
 int main(int argc, char *argv[])
 {
     // Init the structs for argtable
@@ -84,13 +96,13 @@ int main(int argc, char *argv[])
         }
     }
     else if (arg_errors1 == 0)
-        ; // TODO: Perform the corresponding action
+        ; /// @todo Perform the corresponding action
     else if (arg_errors2 == 0)
-        ; // TODO: Perform the corresponding action
+        ; /// @todo Perform the corresponding action
     else if (arg_errors3 == 0)
-        ; // TODO: Perform the corresponding action
+        ; /// @todo Perform the corresponding action
     else if (arg_errors4 == 0)
-        ; // TODO: Perform the corresponding action
+        ; /// @todo Perform the corresponding action
 
     // No command was correct: show the appropriate error message.
     else {

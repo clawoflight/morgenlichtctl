@@ -20,7 +20,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_net.h>
 
-#define MORGENLICHTD_PORT 1234 ///< The public port of morgenlichtd TODO: choose a proper port :)
+#define MORGENLICHTD_PORT 1234 ///< The public port of morgenlichtd @todo choose a proper port :)
 
 /**
  * Initialise the required libraries and the TCP connection to the server.
