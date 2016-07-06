@@ -18,7 +18,9 @@ TODO
 
 # AUTHORS
 
-Written by Bennett Piater and Andreas Postel. Soli Deo Gloria!
+Written by Bennett Piater and Andreas Postel.
+
+Soli Deo Gloria!
 
 # REPORTING BUGS
 
