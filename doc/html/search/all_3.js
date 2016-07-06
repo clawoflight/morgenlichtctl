@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['network_5fread',['network_read',['../networking_8h.html#a3c0b6fc69e2d9fb59bf33e48b193de6f',1,'networking.c']]],
-  ['network_5fwrite',['network_write',['../networking_8h.html#ab32b2195cdc973257c9a2b89ac71e3e9',1,'networking.c']]],
-  ['networking_2eh',['networking.h',['../networking_8h.html',1,'']]]
+  ['main',['main',['../morgenlichtctl_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'morgenlichtctl.c']]],
+  ['morgenlichtctl_2ec',['morgenlichtctl.c',['../morgenlichtctl_8c.html',1,'']]],
+  ['morgenlichtd_5fport',['MORGENLICHTD_PORT',['../networking_8h.html#a93ddcb5fb0a63da36d0cf2067268bef2',1,'networking.h']]]
 ];

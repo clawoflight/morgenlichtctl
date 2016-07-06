@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['networking_2eh',['networking.h',['../networking_8h.html',1,'']]]
+  ['morgenlichtctl_2ec',['morgenlichtctl.c',['../morgenlichtctl_8c.html',1,'']]]
 ];

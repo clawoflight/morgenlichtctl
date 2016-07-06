@@ -1,3 +1,4 @@
 <map id="networking.h" name="networking.h">
-<area shape="rect" id="node2" href="$morgenlichtctl_8c.html" title="The primary file. " alt="" coords="5,80,120,107"/>
+<area shape="rect" id="node2" href="$alarm_8h.html" title="Implements the client&#45;side of the MorgenLicht alarm protocol. " alt="" coords="5,80,71,107"/>
+<area shape="rect" id="node3" href="$morgenlichtctl_8c.html" title="The primary file. " alt="" coords="95,80,210,107"/>
 </map>
