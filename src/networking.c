@@ -16,7 +16,7 @@
 static IPaddress ipaddress; ///< The IP address of the server to connect to
 static TCPsocket server_sock; ///< The TCP socket of the server
 
-int init_networking(char* remote_host)
+int init_networking(const char* const remote_host)
 {
     /* Init the libraries that we use */
     if (SDL_Init(0) == -1) {
@@ -46,7 +46,7 @@ int init_networking(char* remote_host)
     return 0;
 }
 
-int network_write(char* message)
+int network_write(const char* const message)
 {
     int len = strlen(message) + 1; // add one for the terminating NULL
     int sent = SDLNet_TCP_Send(server_sock, message, len);
@@ -60,7 +60,7 @@ int network_write(char* message)
     return 0;
 }
 
-int network_read(int maxlen, char* buff)
+int network_read(int maxlen, char* const buff)
 {
     if (SDLNet_TCP_Recv(server_sock, buff, maxlen) <= 0) {
         // An error may have occured, but sometimes you can just ignore it

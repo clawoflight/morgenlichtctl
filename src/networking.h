@@ -30,7 +30,7 @@
  *
  * @return 0 on success, or non-zero otherwise.
  */
-int init_networking(char* remote_host);
+int init_networking(const char* const remote_host);
 
 
 /**
@@ -45,7 +45,7 @@ void term_networking();
  *
  * @return 0 on success, or non-zero otherwise.
  */
-int network_write(char* message);
+int network_write(const char* const message);
 
 /**
  * Read a message sent from the server via TCP.
@@ -55,6 +55,6 @@ int network_write(char* message);
  *
  * @return 0 on success, or non-zero otherwise.
  */
-int network_read(int maxlen, char* buff);
+int network_read(int maxlen, char* const buff);
 
 #endif // MORGENLICHTCTL_NETWORKING_H
