@@ -31,15 +31,17 @@ int init_networking(char* remote_host)
     // Resolve the host name of the server
     if (SDLNet_ResolveHost(&ipaddress, remote_host, MORGENLICHTD_PORT) == -1)
     {
-        fprintf(stderr, "SDLNet_ResolveHost: %s\n", SDLNet_GetError());
+        fprintf(stderr, "Could not resolve %s:\n\t%s\n", remote_host, SDLNet_GetError());
         return 1;
     }
 
     // Connect to the server
     if ((server_sock = SDLNet_TCP_Open(&ipaddress)) == NULL) {
-        fprintf(stderr, "SDLNet_TCP_Open: %s\n", SDLNet_GetError());
+        fprintf(stderr, "Could not open a TCP connection with %s:\n\t%s\n", remote_host, SDLNet_GetError());
         return 1;
     }
+
+    printf("Connected to %s\n", remote_host);
 
     return 0;
 }
