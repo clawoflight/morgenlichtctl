@@ -36,13 +36,16 @@ int init_networking(const char* const remote_host)
         return 1;
     }
 
+    printf("Connecting to %s...", remote_host);
+    fflush(stdout); // Flush to make sure that the previous line is printed
+
     // Connect to the server
     if ((server_sock = SDLNet_TCP_Open(&ipaddress)) == NULL) {
         fprintf(stderr, "Could not open a TCP connection with %s:\n\t%s\n", remote_host, SDLNet_GetError());
         return 1;
     }
 
-    printf("Connected to %s\n", remote_host);
+    printf(" done.\n");
 
     return 0;
 }
