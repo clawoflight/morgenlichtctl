@@ -7,17 +7,70 @@ morgenlichtctl \- command\-line client for morgenlichtd
 
 .SH SYNOPSIS
 .PP
-TODO
+\fBmorgenlichtctl\fP [\-hv]
+
+.PP
+\fBmorgenlichtctl\fP alarm list
+
+.PP
+\fBmorgenlichtctl\fP alarm enable|disable <ALARM>
+
+.PP
+\fBmorgenlichtctl\fP alarm add 
+\[la]HH:MM:SS\[ra] \-n <ALARM> \-d DayDay [\-c <COLOR>] [\-s <SOUND>]
 
 
 .SH DESCRIPTION
 .PP
-TODO
+\-h, \-\-help                Print help and exit.
+
+.PP
+\-v, \-\-version             Print version and exit.
+
+.PP
+enable|disable <ALARM>    Enable or disable an alarm.
+
+.PP
+
+\[la]HH:MM:SS\[ra]                The ringing time of the alarm
+
+.PP
+\-n, \-\-name=<ALARM>        The name of the alarm
+
+.PP
+\-d, \-\-days=DayDay         The weekdays at which the alarm is enabled. String of Mon Tue Wed etc. in order.
+
+.PP
+\-c, \-\-color=<COLOR>       The color profile to use.
+
+.PP
+\-s, \-\-sound=<SOUND>       The sound to play
 
 
 .SH EXAMPLES
 .PP
-TODO
+Disable an alarm:
+
+.PP
+.RS
+
+.nf
+morgenlichtctl alarm disable "my old alarm"
+
+.fi
+.RE
+
+.PP
+Add a new alarm:
+
+.PP
+.RS
+
+.nf
+morgenlichtctl alarm add 06:30:00 \-n "my alarm" \-d MonWedFri
+
+.fi
+.RE
 
 
 .SH AUTHORS

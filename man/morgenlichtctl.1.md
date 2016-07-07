@@ -6,15 +6,47 @@ morgenlichtctl - command-line client for morgenlichtd
 
 # SYNOPSIS
 
-TODO
+**morgenlichtctl** [-hv]
+
+**morgenlichtctl** alarm list
+
+**morgenlichtctl** alarm enable|disable <ALARM>
+
+**morgenlichtctl** alarm add <HH:MM:SS> -n <ALARM> -d DayDay [-c <COLOR>] [-s <SOUND>]
 
 # DESCRIPTION
 
-TODO
+Manage alarms on a **morgenlicht**(7) system.
+
+ -h, --help                Print help and exit.
+
+ -v, --version             Print version and exit.
+
+ enable|disable <ALARM>    Enable or disable an alarm.
+
+ <HH:MM:SS>                The ringing time of the alarm
+
+ -n, --name=<ALARM>        The name of the alarm
+
+ -d, --days=DayDay         The weekdays at which the alarm is enabled. String of Mon Tue Wed etc. in order.
+
+ -c, --color=<COLOR>       The color profile to use.
+
+ -s, --sound=<SOUND>       The sound to play
 
 # EXAMPLES
 
-TODO
+Disable an alarm:
+
+```
+morgenlichtctl alarm disable "my old alarm"
+```
+
+Add a new alarm:
+
+```
+morgenlichtctl alarm add 06:30:00 -n "my alarm" -d MonWedFri
+```
 
 # AUTHORS
 

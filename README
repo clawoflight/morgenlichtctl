@@ -1,0 +1,46 @@
+# Morgenlichtctl
+
+Morgenlichtctl is a simple client for [morgenlichtd](https://github.com/Coecoenut/MorgenLicht), written in C. It is also currently the official one.
+
+## Installing
+
+### Arch
+
+A package for Arch Linux will be provided in the AUR as soon as the program is usable.
+
+### From Source
+
+Dependencies:
+
+- SDL2
+- SDL2_net
+- argtable2
+
+Get them in Debian or it's derivatives with `sudo apt-get install libsdl2-dev libsdl2-net-dev libargtable2-dev`.
+
+This project uses the *GNU autotools*. Simply download the latest release and execute `./configure`, `make` and `sudo make install` in the project root to install it. Autoconf will complain if any libraries are missing.
+
+Note that while automake does add a `make uninstall` target, it would be wise for you to use [checkinstall](http://asic-linux.com.mx/~izto/checkinstall/), if available.
+
+## Usage
+
+```
+morgenlichtctl  [-hv]
+ -h, --help                Print help and exit.
+ -v, --version             Print version and exit.
+
+morgenlichtctl  alarm list
+
+morgenlichtctl  alarm enable <ALARM>
+ <ALARM>                   The alarm to enable
+
+morgenlichtctl  alarm disable <ALARM>
+ <ALARM>                   The alarm to disable
+
+morgenlichtctl  alarm add <HH:MM:SS> -n <ALARM> -d DayDay [-c <COLOR>] [-s <SOUND>]
+ <HH:MM:SS>                The ringing time
+ -n, --name=<ALARM>        The name of the alarm
+ -d, --days=DayDay         The weekdays at which the alarm is enabled. String of MonTueWedThuFriSatSun.
+ -c, --color=<COLOR>       The color profile to use.
+ -s, --sound=<SOUND>       The sound to play
+```
