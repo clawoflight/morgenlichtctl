@@ -1,5 +1,12 @@
 # Morgenlichtctl
 
+[![license](https://img.shields.io/github/license/clawoflight/morgenlichtctl.svg?maxAge=2592000)](https://github.com/clawoflight/morgenlichtctl/blob/master/LICENSE)
+[![GitHub contributors](https://img.shields.io/github/contributors/clawoflight/morgenlichtctl.svg)](https://github.com/clawoflight/morgenlichtctl/blob/master/AUTHORS)
+[![Github All Releases](https://img.shields.io/github/downloads/clawoflight/morgenlichtctl/total.svg?maxAge=2592000)]()
+[![GitHub release](https://img.shields.io/github/release/clawoflight/morgenlichtctl.svg?maxAge=2592000)](https://github.com/clawoflight/morgenlichtctl/releases)
+[![AUR](https://img.shields.io/aur/version/morgenlichtctl.svg?maxAge=2592000)](https://aur.archlinux.org/packages/morgenlichtctl/)
+[![AUR](https://img.shields.io/aur/votes/morgenlichtctl.svg?maxAge=2592000)](https://aur.archlinux.org/packages/morgenlichtctl/)
+
 Morgenlichtctl is a simple client for [morgenlichtd](https://github.com/Coecoenut/MorgenLicht), written in C. It is also currently the official one.
 
 ## Installing
