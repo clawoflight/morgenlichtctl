@@ -58,4 +58,12 @@ int network_write(const char* const message);
  */
 int network_read(int maxlen, char* const buff);
 
+
+/**
+ * Read one character from the server.
+ *
+ * @return the read char, or -1 on error.
+ */
+char network_read_char();
+
 #endif // MORGENLICHTCTL_NETWORKING_H

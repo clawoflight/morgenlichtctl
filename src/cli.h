@@ -66,4 +66,9 @@ struct arg_rex* days;
 struct arg_end* end4;
 int arg_errors4;
 
+/* SYNTAX: server-info */
+struct arg_rex* cmd5;
+struct arg_end* end5;
+int arg_errors5;
+
 #endif // MORGENLICHTCTL_CLI_H

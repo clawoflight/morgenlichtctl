@@ -41,11 +41,11 @@ int init_networking(const char* const remote_host)
 
     // Connect to the server
     if ((server_sock = SDLNet_TCP_Open(&ipaddress)) == NULL) {
-        fprintf(stderr, "Could not open a TCP connection with %s:\n\t%s\n", remote_host, SDLNet_GetError());
+        fprintf(stderr, " Could not open a TCP connection with %s:\n\t%s\n", remote_host, SDLNet_GetError());
         return 1;
     }
 
-    printf(" done.\n");
+    printf(" done.\n\n");
 
     return 0;
 }
@@ -74,6 +74,17 @@ int network_read(int maxlen, char* const buff)
     }
 
     return 0;
+}
+
+char network_read_char()
+{
+    char buf;
+    if (SDLNet_TCP_Recv(server_sock, &buf, 1) <= 0) {
+        fprintf(stderr, "Could not read from the server: %s\n", SDLNet_GetError());
+        return -1;
+    }
+
+    return buf;
 }
 
 void term_networking()

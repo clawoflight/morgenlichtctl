@@ -43,4 +43,7 @@ void init_argtable()
     color_profile = arg_str0("c", "color", "<COLOR>", "The color profile to use.");
     sound_file = arg_str0("s", "sound", "<SOUND>", "The sound to play");
     end4 = arg_end(15);
+
+    cmd5 = arg_rex1(NULL, NULL, "server-info", NULL, REG_ICASE, NULL);
+    end5 = arg_end(15);
 }

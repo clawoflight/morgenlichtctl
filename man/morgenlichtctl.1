@@ -10,6 +10,9 @@ morgenlichtctl \- command\-line client for morgenlichtd
 \fBmorgenlichtctl\fP [\-hv]
 
 .PP
+\fBmorgenlichtctl\fP server\-info
+
+.PP
 \fBmorgenlichtctl\fP alarm list
 
 .PP
@@ -21,6 +24,9 @@ morgenlichtctl \- command\-line client for morgenlichtd
 
 
 .SH DESCRIPTION
+.PP
+Manage alarms on a \fBmorgenlicht\fP(7) system.
+
 .PP
 \-h, \-\-help                Print help and exit.
 
@@ -71,6 +77,11 @@ morgenlichtctl alarm add 06:30:00 \-n "my alarm" \-d MonWedFri
 
 .fi
 .RE
+
+
+.SH ENVIRONMENT VARIABLES
+.PP
+\fBMORGENLICHT\_SERVER\fP Override "localhost" as the server to use.
 
 
 .SH AUTHORS

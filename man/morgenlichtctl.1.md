@@ -8,6 +8,8 @@ morgenlichtctl - command-line client for morgenlichtd
 
 **morgenlichtctl** [-hv]
 
+**morgenlichtctl** server-info
+
 **morgenlichtctl** alarm list
 
 **morgenlichtctl** alarm enable|disable <ALARM>
@@ -47,6 +49,10 @@ Add a new alarm:
 ```
 morgenlichtctl alarm add 06:30:00 -n "my alarm" -d MonWedFri
 ```
+
+# ENVIRONMENT VARIABLES
+
+**MORGENLICHT_SERVER** Override "localhost" as the server to use.
 
 # AUTHORS
 
