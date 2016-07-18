@@ -49,6 +49,20 @@ int server_info(const char *const hostname)
             break;
     }
 
+    #ifdef DEBUG_TCP
+    /* print the received message body */
+    printf("\x1b[36;1m"); // ANSI bright cyan code
+    printf("Received TCP message: ");
+    for (int i = 0; i < strlen(buf); ++i)
+    {
+        if (isprint(buf[i]))
+            printf("%c", buf[i]);
+        else
+            printf("\\%03o", buf[i]);
+    }
+    printf("\x1b[0m\n"); // reset ANSI escapes
+    #endif
+
     char ack_nack = EOF;
     // Scan the beginning of the response and check if it contains a message.
     if (sscanf(buf, "%c\007%49[0-9a-zA-z ]s\003", &ack_nack, msg) == 2)
@@ -58,7 +72,7 @@ int server_info(const char *const hostname)
     int status = 0;
     // NAK
     if (ack_nack == '\025') {
-        printf("The server could not fulfill the request.\n");
+        fprintf(stderr, "The server could not fulfill the request.\n");
         status = 1;
 
     // ACK
@@ -73,23 +87,14 @@ int server_info(const char *const hostname)
 
         // No payload
         if (payload == NULL) {
-            printf("Illegal response: no payload.\n");
+            fprintf(stderr, "Illegal response: no payload.\n");
             status = 1;
         }
 
         // Parse the payload and handle invalid content
         if (sscanf(payload, "\002%49[0-9a-zA-Z ]\037%49[0-9a-zA-Z._-]\037%d.%d\003\004",
             hostname, version, &protocol_major, &protocol_minor) != 4) {
-            printf("Illegal response: invalid payload.\n");
-
-            // debugging output
-            // for (int i = 0; i < strlen(payload); ++i)
-            // {
-            //     if (isprint(payload[i]))
-            //         printf("%c", payload[i]);
-            //     else
-            //         printf("\%o", payload[i]);
-            // }
+            fprintf(stderr, "Illegal response: invalid payload.\n");
 
             status = 1;
 
@@ -102,7 +107,7 @@ int server_info(const char *const hostname)
 
     // Neither ACK nor NACK
     } else {
-        printf("Illegal response: missing status code.\n");
+        fprintf(stderr, "Illegal response: missing status code.\n");
         status = 1;
     }
 
