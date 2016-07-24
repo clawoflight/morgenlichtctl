@@ -1,1 +1,1 @@
-man_MANS = morgenlichtctl.1
+dist_man_MANS = morgenlichtctl.1

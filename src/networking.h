@@ -60,9 +60,9 @@ int network_read(int maxlen, char* const buff);
 
 
 /**
- * Read one character from the server.
+ * Read a single char from the server.
  *
- * @return the read char, or -1 on error.
+ * @return The read character, or -1 on error.
  */
 char network_read_char();
 

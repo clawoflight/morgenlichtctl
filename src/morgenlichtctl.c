@@ -21,7 +21,7 @@
  */
 
 #include "cli.h"
-#include "various.h"
+#include "protocol_utils.h"
 
 #include <stdlib.h>
 #include <stdio.h>
