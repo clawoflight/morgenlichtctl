@@ -1,17 +1,3 @@
-/* © 2015, 2016 Andreas Postel and Bennett Piater.
- This file is part of morgenlichtctl.
-
- Morgenlichtctl is free software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, version 3 of the License.
- morgenlichtctl is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with morgenlichtctl. If not, see <http://www.gnu.org/licenses/>.
-*/
 #include "protocol_utils.h"
 
 #define PROTOCOL_VERSION "0.1"
@@ -121,7 +107,7 @@ int server_info(const char *const hostname)
         }
 
         // Parse the payload and handle invalid content
-        if (sscanf(payload, "\002%49[0-9a-zA-Z ]\037%49[0-9a-zA-Z._-]\037%d.%d\003\004",
+        if (sscanf(payload, "\002%49[0-9a-zA-Z._- ]\037%49[0-9a-zA-Z._-]\037%d.%d\003\004",
             hostname, version, &protocol_major, &protocol_minor) != 4) {
             fprintf(stderr, "Illegal response: invalid payload.\n");
 
