@@ -4,7 +4,6 @@
 * @file networking.h
 * This file provides an abstraction layer for the network connection to the morgenlichtd server.
 */
-#include <SDL2/SDL.h>
 #include <SDL2/SDL_net.h>
 
 #define MORGENLICHTD_PORT 1234 ///< The public port of morgenlichtd @todo choose a proper port :)

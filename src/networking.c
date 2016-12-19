@@ -6,10 +6,6 @@ static TCPsocket server_sock; ///< The TCP socket of the server
 int init_networking(const char* const remote_host)
 {
     /* Init the libraries that we use */
-    if (SDL_Init(0) == -1) {
-        fprintf(stderr, "SDL_Init: %s\n", SDL_GetError());
-        return 1;
-    }
     if (SDLNet_Init() == -1) {
         fprintf(stderr, "SDLNet_Init: %s\n", SDLNet_GetError());
         return 1;
@@ -77,5 +73,4 @@ void term_networking()
 {
     SDLNet_TCP_Close(server_sock);
     SDLNet_Quit();
-    SDL_Quit();
 }
