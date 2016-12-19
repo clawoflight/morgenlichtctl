@@ -1,6 +1,22 @@
 #include "protocol_utils.h"
 
-#define PROTOCOL_VERSION "0.1"
+#define SOH "\001" ///< Start of Heading
+#define STX "\002" ///< Start of text
+#define ETX "\003" ///< End of text
+#define EOT "\004" ///< End of transmission
+#define ACK "\006" ///< Acknowledgment
+#define NAK "\025" ///< Negative acknowledgment
+#define BEL "\007" ///< Bell
+#define RS  "\036" ///< Record separator
+#define US  "\037" ///< Unit separator
+#define REQ_HELLO "hello" ///< The server information request
+#define REQ_ALRM_ADD "alarm-add" ///< The alarm addition request
+#define REQ_ALRM_ENA "alarm-enable" ///< The alarm enable request
+#define REQ_ALRM_DIS "alarm-disable" ///< The alarm disable request
+#define REQ_ALRM_DEL "alarm-delete" ///< The alarm deletion request
+#define REQ_ALRM_LS "alarm-list" ///< The alarm list request
+
+#define PROTOCOL_VERSION "0.3"
 
 int parse_response(char* status, char** payload)
 {
@@ -38,14 +54,14 @@ int parse_response(char* status, char** payload)
     char ack_nack = EOF;
     char msg[50];
     // Scan the beginning of the response and check if it contains a message.
-    if (sscanf(buf, "%c\007%49[0-9a-zA-z ]s\003", &ack_nack, msg) == 2)
+    if (sscanf(buf, "%c"BEL"%49[0-9a-zA-z ]s"ETX, &ack_nack, msg) == 2)
         printf("Message from the server: %s\n", msg);
 
     // Write the status code to the receiving variable
     *status = ack_nack;
 
     // Locate STX to find the beginning of the payload
-    char* payload_start = strchr(buf, '\002');
+    char* payload_start = strchr(buf, *STX);
 
     /* If no payload was found */
     if (payload_start == NULL) {
@@ -71,7 +87,7 @@ int server_info(const char *const hostname)
 
     char msg[50];
     /* Prepare the request */
-    snprintf(msg, 50, "\001%s\037hello\003\004", PROTOCOL_VERSION);
+    snprintf(msg, 50, SOH"%s"US""REQ_HELLO""ETX""EOT, PROTOCOL_VERSION);
 
     /* Send the request */
     if (network_write(msg)) {
@@ -89,12 +105,12 @@ int server_info(const char *const hostname)
 
     int return_value = 0;
     // NAK
-    if (ack_nack == '\025') {
+    if (ack_nack == *NAK) {
         fprintf(stderr, "The server could not fulfill the request.\n");
         return_value = 1;
 
     // ACK
-    } else if (ack_nack == '\006') {
+    } else if (ack_nack == *ACK) {
         char hostname[50];
         char version[50];
         int protocol_major;
@@ -107,7 +123,7 @@ int server_info(const char *const hostname)
         }
 
         // Parse the payload and handle invalid content
-        if (sscanf(payload, "\002%49[0-9a-zA-Z._- ]\037%49[0-9a-zA-Z._-]\037%d.%d\003\004",
+        if (sscanf(payload, STX"%49[0-9a-zA-Z._- ]"US"%49[0-9a-zA-Z._-]"US"%d.%d"ETX""EOT,
             hostname, version, &protocol_major, &protocol_minor) != 4) {
             fprintf(stderr, "Illegal response: invalid payload.\n");
 
