@@ -9,6 +9,11 @@
 #include <string.h>
 
 /**
+ * Basic alarm commands.
+ */
+enum AlarmCmd {AlarmEnable, AlarmDisable, AlarmDelete};
+
+/**
  * Read and parse a response from the server.
  *
  * This will print out the warning if the server sent one,
@@ -32,5 +37,19 @@ int parse_response(char* status, char** payload);
  * @return 0 on success, or non-zero otherwise.
  */
 int server_info(const char *const hostname);
+
+/**
+ * Perform the most basic alarm commands.
+ *
+ * These only require the profile name as argument and return success or failure,
+ * which makes them specially simple to implement.
+ *
+ * @param  hostname The hostname of the server
+ * @param  profile  The alarm profile to act upon
+ * @param  cmd      The command to execute
+ *
+ * @return 0 on success, or non-zero otherwise.
+ */
+int alarm_basic_cmd(const char *const hostname, const char *const profile, enum AlarmCmd cmd);
 
 #endif // MORGENLICHTCTL_VARIOUS_H

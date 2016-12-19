@@ -54,7 +54,7 @@ int parse_response(char* status, char** payload)
     char ack_nack = EOF;
     char msg[50];
     // Scan the beginning of the response and check if it contains a message.
-    if (sscanf(buf, "%c"BEL"%49[0-9a-zA-z ]s"ETX, &ack_nack, msg) == 2)
+    if (sscanf(buf, "%c"BEL"%49[0-9a-zA-z _-]s"ETX, &ack_nack, msg) == 2)
         printf("Message from the server: %s\n", msg);
 
     // Write the status code to the receiving variable
@@ -143,6 +143,61 @@ int server_info(const char *const hostname)
     }
 
     free(payload); // NOTE: Never forget this!
+    term_networking();
+    return return_value;
+}
+
+int alarm_basic_cmd(const char *const hostname, const char *const profile, enum AlarmCmd cmd)
+{
+    if (init_networking(hostname))
+        return 1;
+
+    // Determine the command
+    char* protocol_cmd = "";
+    switch(cmd) {
+        case AlarmEnable:
+            protocol_cmd = REQ_ALRM_ENA;
+            break;
+        case AlarmDisable:
+            protocol_cmd = REQ_ALRM_DIS;
+            break;
+        case AlarmDelete:
+            protocol_cmd = REQ_ALRM_DEL;
+            break;
+    }
+
+    char msg[200];
+    /* Prepare the request */
+    snprintf(msg, 200, SOH"%s"US"%s"ETX""STX"%s"ETX""EOT, PROTOCOL_VERSION, protocol_cmd, profile);
+
+    /* Send the request */
+    if (network_write(msg)) {
+        term_networking();
+        return 1;
+    }
+
+    /* Parse the response */
+    char ack_nack;
+    char* payload;
+    if (parse_response(&ack_nack, &payload)) {
+        term_networking();
+        return 1;
+    }
+
+    int return_value = 1;
+    // NAK
+    if (ack_nack == *NAK) {
+        fprintf(stderr, "The server could not fulfill the request.\n");
+    } else if (ack_nack == *ACK) {
+        puts("Operation completed successfully.");
+        return_value = 0;
+    } else {
+        fprintf(stderr, "Illegal response: missing status code.\n");
+    }
+
+
+    if (payload != NULL)
+        free(payload);
     term_networking();
     return return_value;
 }
