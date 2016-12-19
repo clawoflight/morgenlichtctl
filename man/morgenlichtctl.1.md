@@ -1,4 +1,4 @@
-% AURSEC(1) MorgenLicht user manuals
+% MORGENLICHTCTL(1) MorgenLicht user manuals
 % Andreas Postel and Bennett Piater
 % December 19, 2016
 
@@ -12,7 +12,7 @@ morgenlichtctl - command-line client for morgenlichtd
 
 **morgenlichtctl** alarm list
 
-**morgenlichtctl** alarm enable|disable *ALARM*
+**morgenlichtctl** alarm enable|disable|delete *ALARM*
 
 **morgenlichtctl** alarm add *HH:MM:SS* -n *ALARM* -d *DayDay* [-c *COLOR*] [-s *SOUND*]
 
@@ -28,8 +28,8 @@ Mandatory options for long options are mandatory for short options too.
 -v, --version
 : Print version and exit.
 
-enable|disable *ALARM*
-: Enable or disable an alarm.
+enable|disable|delete *ALARM*
+: Enable, disable or delete an alarm.
 
 *HH:MM:SS*
 : The ringing time of the alarm

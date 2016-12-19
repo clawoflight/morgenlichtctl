@@ -36,6 +36,7 @@ int main(int argc, char *argv[])
     void* argtable3[] = {cmd3, cmd3b, disable_alarm_name, end3};
     void* argtable4[] = {cmd4, cmd4b, alarm_time, alarm_name, days, color_profile, sound_file, end4};
     void* argtable5[] = {cmd5, end5};
+    void* argtable6[] = {cmd6, cmd6b, delete_alarm_name, end6};
 
     /* Check for problems */
     if (arg_nullcheck(argtable0) ||
@@ -43,7 +44,8 @@ int main(int argc, char *argv[])
         arg_nullcheck(argtable2) ||
         arg_nullcheck(argtable3) ||
         arg_nullcheck(argtable4) ||
-        arg_nullcheck(argtable5))
+        arg_nullcheck(argtable5) ||
+        arg_nullcheck(argtable6))
     {
         fprintf(stderr, "error: insufficient memory\n");
         exit(EXIT_FAILURE);
@@ -60,6 +62,7 @@ int main(int argc, char *argv[])
     arg_errors3 = arg_parse(argc, argv, argtable3);
     arg_errors4 = arg_parse(argc, argv, argtable4);
     arg_errors5 = arg_parse(argc, argv, argtable5);
+    arg_errors6 = arg_parse(argc, argv, argtable6);
 
     int status = EXIT_SUCCESS;
     /* Work and handle errors */
@@ -89,6 +92,10 @@ int main(int argc, char *argv[])
             arg_print_glossary_gnu(stdout, argtable3);
 
             printf("\n%s ", argv[0]);
+            arg_print_syntax(stdout, argtable6, "\n");
+            arg_print_glossary_gnu(stdout, argtable6);
+
+            printf("\n%s ", argv[0]);
             arg_print_syntax(stdout, argtable4, "\n");
             arg_print_glossary_gnu(stdout, argtable4);
         }
@@ -103,6 +110,8 @@ int main(int argc, char *argv[])
         ; /// @todo Perform the corresponding action
     else if (arg_errors5 == 0)
         status = server_info(hostname);
+    else if (arg_errors6 == 0)
+        ; /// @todo Perform the corresponding action
 
     // No command was correct: show the appropriate error message.
     else {

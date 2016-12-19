@@ -41,6 +41,13 @@ struct arg_str* disable_alarm_name;
 struct arg_end* end3;
 int arg_errors3;
 
+/* SYNTAX: alarm delete PROFILE */
+struct arg_rex* cmd6;
+struct arg_rex* cmd6b;
+struct arg_str* delete_alarm_name;
+struct arg_end* end6;
+int arg_errors6;
+
 /* SYNTAX: alarm add TIME --name NAME --color-profile PROFILE --sound-file SOUND --days DayDay */
 struct arg_rex* cmd4;
 struct arg_rex* cmd4b;
