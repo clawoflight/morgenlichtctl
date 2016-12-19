@@ -1,0 +1,4 @@
+<map id="parse_response" name="parse_response">
+<area shape="rect" id="node2" href="$networking_8h.html#a452c1ce9209a371b08301df0fb35b7aa" title="Read a single char from the server. " alt="" coords="177,5,324,32"/>
+<area shape="rect" id="node3" href="$networking_8h.html#aed9a5ef41373d2bee0c1366e70c088a7" title="Close the TCP connection if it is still active, then de&#45;initialize the used libraries. " alt="" coords="184,56,317,83"/>
+</map>

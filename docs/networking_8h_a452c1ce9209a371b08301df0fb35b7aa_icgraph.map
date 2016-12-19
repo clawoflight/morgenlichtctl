@@ -1,0 +1,4 @@
+<map id="network_read_char" name="network_read_char">
+<area shape="rect" id="node2" href="$protocol__utils_8h.html#a4b463fcc042e8f1ab593b1c0811d8f74" title="Read and parse a response from the server. " alt="" coords="200,5,324,32"/>
+<area shape="rect" id="node3" href="$protocol__utils_8h.html#adffc5503f5f4252925985ed3b9a5dac5" title="Print out some basic info about a morgenlichtd server. " alt="" coords="372,5,467,32"/>
+</map>
