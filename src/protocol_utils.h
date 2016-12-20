@@ -52,4 +52,22 @@ int server_info(const char *const hostname);
  */
 int alarm_basic_cmd(const char *const hostname, const char *const profile, enum AlarmCmd cmd);
 
+/**
+ * Add a new alarm or update an existing one.
+ *
+ * @param  hostname    The hostname of the server
+ * @param  profile     The alarm profile to create or overwrite
+ * @param  hour        The trigger hour
+ * @param  minute      The trigger minute
+ * @param  second      The trigger second
+ * @param  active_days The days on which the profile is active
+ * @param  color       The color profile
+ * @param  sound       The sound file
+ *
+ * @return 0 on success, or non-zero otherwise.
+ */
+int alarm_add(const char *const hostname, const char* const profile,
+    const int hour, const int minute, const int second,
+    const char* const active_days, const char* const color, const char* const sound);
+
 #endif // MORGENLICHTCTL_VARIOUS_H

@@ -44,7 +44,7 @@ enable|disable|delete *ALARM*
 : The color profile to use.
 
 -s, --sound=*SOUND*
-: The sound to play
+: The sound to play. If this is set, **--color** must be set as well!
 
 # EXAMPLES
 Disable an alarm:

@@ -19,11 +19,10 @@ A package for Arch Linux will be provided in the AUR as soon as the program is u
 
 Dependencies:
 
-- SDL2
 - SDL2_net
 - argtable2
 
-Get them in Debian or it's derivatives with `sudo apt-get install libsdl2-dev libsdl2-net-dev libargtable2-dev`.
+Get them in Debian or it's derivatives with `sudo apt-get install libsdl2-net-dev libargtable2-dev`.
 
 This project uses the *GNU autotools*. Simply download the latest release and execute `./configure`, `make` and `sudo make install` in the project root to install it. Autoconf will complain if any libraries are missing.
 

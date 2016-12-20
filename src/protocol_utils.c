@@ -16,7 +16,7 @@
 #define REQ_ALRM_DEL "alarm-delete" ///< The alarm deletion request
 #define REQ_ALRM_LS "alarm-list" ///< The alarm list request
 
-#define PROTOCOL_VERSION "0.3"
+#define PROTOCOL_VERSION "0.4"
 
 int parse_response(char* status, char** payload)
 {
@@ -85,8 +85,8 @@ int server_info(const char *const hostname)
     if (init_networking(hostname))
         return 1;
 
-    char msg[50];
     /* Prepare the request */
+    char msg[50];
     snprintf(msg, 50, SOH"%s"US""REQ_HELLO""ETX""EOT, PROTOCOL_VERSION);
 
     /* Send the request */
@@ -166,8 +166,8 @@ int alarm_basic_cmd(const char *const hostname, const char *const profile, enum 
             break;
     }
 
-    char msg[200];
     /* Prepare the request */
+    char msg[200];
     snprintf(msg, 200, SOH"%s"US"%s"ETX""STX"%s"ETX""EOT, PROTOCOL_VERSION, protocol_cmd, profile);
 
     /* Send the request */
@@ -185,7 +185,6 @@ int alarm_basic_cmd(const char *const hostname, const char *const profile, enum 
     }
 
     int return_value = 1;
-    // NAK
     if (ack_nack == *NAK) {
         fprintf(stderr, "The server could not fulfill the request.\n");
     } else if (ack_nack == *ACK) {
@@ -195,7 +194,61 @@ int alarm_basic_cmd(const char *const hostname, const char *const profile, enum 
         fprintf(stderr, "Illegal response: missing status code.\n");
     }
 
+    /* Clean up */
+    if (payload != NULL)
+        free(payload);
+    term_networking();
+    return return_value;
+}
 
+int alarm_add(const char* const hostname, const char *const profile,
+    const int hour, const int minute, const int second,
+    const char* const active_days, const char* const color, const char* const sound)
+{
+    if (init_networking(hostname))
+        return 1;
+
+    /* Prepare the request */
+    char msg[1024];
+    // SOH<major_version>.<minor_version>US<operation>ETXSTX<HH:MM:SS>US<alarm_name>US<DayDay>US<color>US<sound>ETX
+    if (color[0] == 0 && sound[0] == 0) // Neither color nor sound specified
+        snprintf(msg, 1023, SOH"%s"US"%s"ETX""STX"%d:%d:%d"US"%s"US"%s"ETX""EOT,
+            PROTOCOL_VERSION, REQ_ALRM_ADD,
+            hour, minute, second, profile, active_days);
+    else if (color[0] != 0 && sound[0] == 0) // Color was specified
+        snprintf(msg, 1023, SOH"%s"US"%s"ETX""STX"%d:%d:%d"US"%s"US"%s"US"%s"ETX""EOT,
+            PROTOCOL_VERSION, REQ_ALRM_ADD,
+            hour, minute, second, profile, active_days, color);
+    else // Color and sound were both specified
+        snprintf(msg, 1023, SOH"%s"US"%s"ETX""STX"%d:%d:%d"US"%s"US"%s"US"%s"US"%s"ETX""EOT,
+            PROTOCOL_VERSION, REQ_ALRM_ADD,
+            hour, minute, second, profile, active_days, color, sound);
+
+    /* Send the request */
+    if (network_write(msg)) {
+        term_networking();
+        return 1;
+    }
+
+    /* Parse the response */
+    char ack_nack;
+    char* payload;
+    if (parse_response(&ack_nack, &payload)) {
+        term_networking();
+        return 1;
+    }
+
+    int return_value = 1;
+    if (ack_nack == *NAK) {
+        fprintf(stderr, "The server could not fulfill the request.\n");
+    } else if (ack_nack == *ACK) {
+        puts("Operation completed successfully.");
+        return_value = 0;
+    } else {
+        fprintf(stderr, "Illegal response: missing status code.\n");
+    }
+
+    /* Clean up */
     if (payload != NULL)
         free(payload);
     term_networking();

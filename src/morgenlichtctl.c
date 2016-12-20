@@ -103,15 +103,17 @@ int main(int argc, char *argv[])
     else if (arg_errors1 == 0)
         ; /// @todo Perform the corresponding action
     else if (arg_errors2 == 0)
-        status = alarm_basic_cmd(hostname, *(enable_alarm_name->sval), AlarmEnable);
+        status = alarm_basic_cmd(hostname, *enable_alarm_name->sval, AlarmEnable);
     else if (arg_errors3 == 0)
-        status = alarm_basic_cmd(hostname, *(disable_alarm_name->sval), AlarmDisable);
+        status = alarm_basic_cmd(hostname, *disable_alarm_name->sval, AlarmDisable);
     else if (arg_errors4 == 0)
-        ; /// @todo Perform the corresponding action
+        status = alarm_add(hostname, *alarm_name->sval,
+           alarm_time->tmval->tm_hour, alarm_time->tmval->tm_min, alarm_time->tmval->tm_sec,
+           *days->sval, *color_profile->sval, *sound_file->sval);
     else if (arg_errors5 == 0)
         status = server_info(hostname);
     else if (arg_errors6 == 0)
-        status = alarm_basic_cmd(hostname, *(delete_alarm_name->sval), AlarmDelete);
+        status = alarm_basic_cmd(hostname, *delete_alarm_name->sval, AlarmDelete);
 
     // No command was correct: show the appropriate error message.
     else {
