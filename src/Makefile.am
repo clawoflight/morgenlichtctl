@@ -1,4 +1,4 @@
-AM_CFLAGS = --pedantic -g -Wall -Wextra -std=gnu11 -O2 -fstack-protector-strong
+AM_CFLAGS = -g -Wall -Wextra -std=gnu11 -O2 -fstack-protector-strong
 
 bin_PROGRAMS = morgenlichtctl
 

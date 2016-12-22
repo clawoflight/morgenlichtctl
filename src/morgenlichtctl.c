@@ -101,7 +101,7 @@ int main(int argc, char *argv[])
         }
     }
     else if (arg_errors1 == 0)
-        ; /// @todo Perform the corresponding action
+        status = alarm_list(hostname);
     else if (arg_errors2 == 0)
         status = alarm_basic_cmd(hostname, *enable_alarm_name->sval, AlarmEnable);
     else if (arg_errors3 == 0)

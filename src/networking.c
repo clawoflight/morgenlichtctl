@@ -61,7 +61,7 @@ int network_read(int maxlen, char* const buff)
 char network_read_char()
 {
     char buf;
-    if (SDLNet_TCP_Recv(server_sock, &buf, 1) <= 0) {
+    if (SDLNet_TCP_Recv(server_sock, &buf, 1) < 0) {
         fprintf(stderr, "Could not read from the server: %s\n", SDLNet_GetError());
         return -1;
     }

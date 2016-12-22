@@ -16,13 +16,13 @@
 #define REQ_ALRM_DEL "alarm-delete" ///< The alarm deletion request
 #define REQ_ALRM_LS "alarm-list" ///< The alarm list request
 
-#define PROTOCOL_VERSION "0.4"
+#define PROTOCOL_VERSION "1.0"
 
 int parse_response(char* status, char** payload)
 {
-    /* Read the response into the buffer */
-    char buf[500];
-    for (int i = 0; i < 500; ++i)
+    /* Read the response into the buffer. TODO: this MUST be made more memory-safe in the future! */
+    static char buf[4096];
+    for (int i = 0; i < 4096; ++i)
     {
         char c = network_read_char();
         if (c == -1) {
@@ -31,16 +31,17 @@ int parse_response(char* status, char** payload)
         }
 
         buf[i] = c;
-        if (c == '\0') // Stop reading at ASCII NULL
+        if (c == '\0' || c == *EOT) // Stop reading at ASCII NULL or EOT
             break;
     }
+    buf[4095] = 0;
 
 // If DEBUG_TCP is set, print out the entire response
 #ifdef DEBUG_TCP
     /* print the received message body */
     printf("\x1b[36;1m"); // ANSI bright cyan code
     printf("Received TCP message: ");
-    for (int i = 0; i < strlen(buf); ++i)
+    for (uint i = 0; i < strlen(buf); ++i)
     {
         /* Non-printing characters are replaced by their escape representation */
         if (isprint(buf[i]))
@@ -70,7 +71,7 @@ int parse_response(char* status, char** payload)
     }
 
     /* Copy the payload to dynamic memory */
-    *payload = malloc(strlen(payload_start) + 1);
+    *payload = calloc(strlen(payload_start) + 1, sizeof(char));
     if (payload == NULL) {
         fprintf(stderr, "Could not allocate memory for the payload.\n");
         return 1;
@@ -205,6 +206,11 @@ int alarm_add(const char* const hostname, const char *const profile,
     const int hour, const int minute, const int second,
     const char* const active_days, const char* const color, const char* const sound)
 {
+    // Check if the user specified sound without color
+    if (color[0] == 0 && sound[0] != 0) {
+        fprintf(stderr, "If a sound file is specified, a color profile is mandatory!\n");
+        return 1;
+    }
     if (init_networking(hostname))
         return 1;
 
@@ -248,6 +254,72 @@ int alarm_add(const char* const hostname, const char *const profile,
         fprintf(stderr, "Illegal response: missing status code.\n");
     }
 
+    /* Clean up */
+    if (payload != NULL)
+        free(payload);
+    term_networking();
+    return return_value;
+}
+
+int alarm_list(const char *const hostname)
+{
+    if (init_networking(hostname))
+        return 1;
+
+    /* Prepare the request */
+    char msg[200];
+    snprintf(msg, 200, SOH"%s"US""REQ_ALRM_LS""ETX""EOT, PROTOCOL_VERSION);
+
+    /* Send the request */
+    if (network_write(msg)) {
+        return 1;
+    }
+
+    /* Parse the response */
+    char ack_nack;
+    char* payload;
+    if (parse_response(&ack_nack, &payload)) {
+        return 1;
+    }
+
+    int return_value = 1;
+    if (ack_nack == *NAK) {
+        fprintf(stderr, "The server could not fulfill the request.\n");
+        goto cleanup;
+    } else if (ack_nack != *ACK) {
+        fprintf(stderr, "Illegal response: missing status code.\n");
+        goto cleanup;
+    }
+    // We got an ACK
+    if (payload == NULL || payload[0] != *STX) {
+        fprintf(stderr, "Illegal response: missing payload.\n");
+        goto cleanup;
+    }
+    /* Parse all the alarms and print them nicely */
+    strtok(payload, RS);
+    char* cur;
+    while ((cur = strtok(NULL, RS)) != NULL) {
+        char *name, *days, *color = NULL, *sound = NULL;
+        int hour, sec, min, enabled;
+        if (sscanf(cur, "%d:%d:%d"US"%m[0-9a-zA-Z._ -]"US"%m[a-zA-Z]"US"%d"US"%m[0-9a-zA-Z._ -]"US"%m[0-9a-zA-Z._ -]",
+            &hour, &min, &sec, &name, &days, &enabled, &color, &sound) < 6) {
+            fprintf(stderr, "Illegal response: invalid payload.\n");
+            goto cleanup;
+        }
+        // Print the alarm
+        printf("%s %d:%d:%d [%s] %s Colors: %s Sound: %s\n",
+            name, hour, min, sec, days,
+            enabled?"Enabled":"Disabled", color?color:"", sound?sound:"");
+        free(name);
+        free(days);
+        if (color != NULL)
+            free(color);
+        if (sound != NULL)
+            free(sound);
+    }
+    return_value = 0;
+
+cleanup:
     /* Clean up */
     if (payload != NULL)
         free(payload);

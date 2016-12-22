@@ -5,6 +5,7 @@
  * This file provides helpers for common protocol functionality and basic queries.
  */
 
+#define _GNU_SOURCE
 #include "networking.h"
 #include <string.h>
 
@@ -51,6 +52,15 @@ int server_info(const char *const hostname);
  * @return 0 on success, or non-zero otherwise.
  */
 int alarm_basic_cmd(const char *const hostname, const char *const profile, enum AlarmCmd cmd);
+
+/**
+ * List all alarms on the server.
+ *
+ * @param  hostname The hostname of the server
+ *
+ * @return 0 on success, or non-zero otherwise.
+ */
+int alarm_list(const char *const hostname);
 
 /**
  * Add a new alarm or update an existing one.
