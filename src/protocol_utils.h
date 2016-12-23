@@ -8,6 +8,7 @@
 #define _GNU_SOURCE
 #include "networking.h"
 #include <string.h>
+#include <stdlib.h>
 
 /**
  * Basic alarm commands.

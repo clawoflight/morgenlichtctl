@@ -7,4 +7,4 @@ morgenlichtctl_SOURCES = morgenlichtctl.c\
  networking.c networking.h protocol_utils.c protocol_utils.h\
  alarm.c alarm.h
 
-morgenlichtctl_LDADD = -largtable2 -lSDL2_net
+morgenlichtctl_LDADD = -largtable2

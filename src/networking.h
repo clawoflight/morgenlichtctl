@@ -4,7 +4,14 @@
 * @file networking.h
 * This file provides an abstraction layer for the network connection to the morgenlichtd server.
 */
-#include <SDL2/SDL_net.h>
+#include <unistd.h>
+#include <string.h>
+#include <strings.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netdb.h>
 
 #define MORGENLICHTD_PORT 4242 ///< The public port of morgenlichtd @todo choose a proper port :)
 
@@ -32,17 +39,6 @@ void term_networking();
  * @return 0 on success, or non-zero otherwise.
  */
 int network_write(const char* const message);
-
-/**
- * Read a message sent from the server via TCP.
- *
- * @param  maxlen The length of the receiving buffer
- * @param  buff   The buffer in which to save the reply
- *
- * @return 0 on success, or non-zero otherwise.
- */
-int network_read(int maxlen, char* const buff);
-
 
 /**
  * Read a single char from the server.
