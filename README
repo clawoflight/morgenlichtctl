@@ -19,9 +19,10 @@ A package for Arch Linux is available in the [AUR](https://aur.archlinux.org/pac
 
 Dependencies:
 
+- pandoc
 - argtable2
 
-Get them in Debian or it's derivatives with `sudo apt-get install libargtable2-dev`.
+Get them in Debian or it's derivatives with `sudo apt-get install pandoc libargtable2-dev`.
 
 This project uses the *GNU autotools*. Simply download the latest release and execute `./configure`, `make` and `sudo make install` in the project root to install it. Autoconf will complain if any libraries are missing.
 
@@ -41,6 +42,9 @@ morgenlichtctl  alarm enable <ALARM>
 
 morgenlichtctl  alarm disable <ALARM>
  <ALARM>                   The alarm to disable
+
+morgenlichtctl  alarm delete <ALARM>
+ <ALARM>                   The alarm to delete
 
 morgenlichtctl  alarm add <HH:MM:SS> -n <ALARM> -d DayDay [-c <COLOR>] [-s <SOUND>]
  <HH:MM:SS>                The ringing time

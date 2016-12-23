@@ -1,5 +1,5 @@
 % MORGENLICHTCTL(1) MorgenLicht user manuals
-% Andreas Postel and Bennett Piater
+% Bennett Piater
 % December 19, 2016
 
 # NAME
@@ -66,16 +66,14 @@ MORGENLICHT_SERVER
 MORGENLICHT_PORT
 : Override 4242 as the port to use.
 
-# AUTHORS
-Written by Bennett Piater and Andreas Postel.
-
-Soli Deo Gloria!
-
 # REPORTING BUGS
 File an issue at http://github.com/ClawOfLight/morgenlichtctl
 
 # COPYRIGHT
-Copyright © 2016 Bennett Piater. Licensed BSD 3-Clause: https://opensource.org/licenses/BSD-3-Clause
+Copyright © 2016 Bennett Piater.
+
+Licensed BSD 3-Clause: https://opensource.org/licenses/BSD-3-Clause
+
 This is free software: you are welcome to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
 
