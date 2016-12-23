@@ -18,6 +18,11 @@
 
 #define PROTOCOL_VERSION "1.0"
 
+#define ANSI_BRIGHT_CYAN "\x1b[36;1m" ///< ANSI bright cyan excape code
+#define ANSI_RED "\x1b[31m" ///< ANSI dark red escape code
+#define ANSI_GREEN "\x1b[32m" ///< ANSI dark green escape code
+#define ANSI_RESET "\x1b[0m" ///< Reset ANSI escapes
+
 int parse_response(char* status, char** payload)
 {
     /* Read the response into the buffer. TODO: this MUST be made more memory-safe in the future! */
@@ -39,7 +44,7 @@ int parse_response(char* status, char** payload)
 // If DEBUG_TCP is set, print out the entire response
 #ifdef DEBUG_TCP
     /* print the received message body */
-    printf("\x1b[36;1m"); // ANSI bright cyan code
+    printf(ANSI_BRIGHT_CYAN); // ANSI bright cyan code
     printf("Received TCP message: ");
     for (uint i = 0; i < strlen(buf); ++i)
     {
@@ -49,7 +54,7 @@ int parse_response(char* status, char** payload)
         else
             printf("\\%03o", buf[i]);
     }
-    printf("\x1b[0m\n"); // reset ANSI escapes
+    printf(ANSI_RESET"\n"); // reset ANSI escapes
 #endif //DEBUG_TCP
 
     char ack_nack = EOF;
@@ -306,10 +311,11 @@ int alarm_list(const char *const hostname)
             fprintf(stderr, "Illegal response: invalid payload.\n");
             goto cleanup;
         }
-        // Print the alarm
-        printf("%s %d:%d:%d [%s] %s Colors: %s Sound: %s\n",
-            name, hour, min, sec, days,
-            enabled?"Enabled":"Disabled", color?color:"", sound?sound:"");
+        /// Print the alarm @todo: make this pretty, yet work decently with many alarms.
+        printf("\nName:\t%s\nTime:\t%02d:%02d:%02d\nStatus:\t%s\nDays:\t[%s]\nColors:\t%s\nSound:\t %s\n",
+            name, hour, min, sec,
+            enabled ? ANSI_GREEN"Enabled"ANSI_RESET : ANSI_RED"Disabled"ANSI_RESET,
+            days, color?color:"", sound?sound:"");
         free(name);
         free(days);
         if (color != NULL)
