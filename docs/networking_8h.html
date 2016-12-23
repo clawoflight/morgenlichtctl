@@ -60,7 +60,6 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">networking.h File Reference</div>  </div>
@@ -69,35 +68,38 @@ $(function() {
 
 <p>This file provides an abstraction layer for the network connection to the morgenlichtd server.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;SDL2/SDL_net.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;strings.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;sys/types.h&gt;</code><br />
+<code>#include &lt;sys/socket.h&gt;</code><br />
+<code>#include &lt;netinet/in.h&gt;</code><br />
+<code>#include &lt;netdb.h&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for networking.h:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="networking_8h__incl.svg" width="135" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="networking_8h__incl.svg" width="100%" height="384"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="networking_8h__dep__incl.svg" width="232" height="187"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="networking_8h__dep__incl.svg" width="232" height="187"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 </div>
 <p><a href="networking_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a93ddcb5fb0a63da36d0cf2067268bef2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="networking_8h.html#a93ddcb5fb0a63da36d0cf2067268bef2">MORGENLICHTD_PORT</a>&#160;&#160;&#160;1234</td></tr>
-<tr class="memdesc:a93ddcb5fb0a63da36d0cf2067268bef2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The public port of morgenlichtd.  <a href="#a93ddcb5fb0a63da36d0cf2067268bef2">More...</a><br /></td></tr>
-<tr class="separator:a93ddcb5fb0a63da36d0cf2067268bef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aef872c822cd6533165667d89134ac522"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="networking_8h.html#aef872c822cd6533165667d89134ac522">init_networking</a> (const char *const remote_host)</td></tr>
-<tr class="memdesc:aef872c822cd6533165667d89134ac522"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise the required libraries and the TCP connection to the server.  <a href="#aef872c822cd6533165667d89134ac522">More...</a><br /></td></tr>
-<tr class="separator:aef872c822cd6533165667d89134ac522"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae811a1f85c2bb44a14d73214e0e1b48d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="networking_8h.html#ae811a1f85c2bb44a14d73214e0e1b48d">init_networking</a> (const char *const remote_host, const int port)</td></tr>
+<tr class="memdesc:ae811a1f85c2bb44a14d73214e0e1b48d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise the required libraries and the TCP connection to the server.  <a href="#ae811a1f85c2bb44a14d73214e0e1b48d">More...</a><br /></td></tr>
+<tr class="separator:ae811a1f85c2bb44a14d73214e0e1b48d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed9a5ef41373d2bee0c1366e70c088a7"><td class="memItemLeft" align="right" valign="top"><a id="aed9a5ef41373d2bee0c1366e70c088a7"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="networking_8h.html#aed9a5ef41373d2bee0c1366e70c088a7">term_networking</a> ()</td></tr>
 <tr class="memdesc:aed9a5ef41373d2bee0c1366e70c088a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the TCP connection if it is still active, then de-initialize the used libraries. <br /></td></tr>
@@ -105,38 +107,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="netw
 <tr class="memitem:a6c56eb3350af36e56b684ba7604cdb60"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="networking_8h.html#a6c56eb3350af36e56b684ba7604cdb60">network_write</a> (const char *const message)</td></tr>
 <tr class="memdesc:a6c56eb3350af36e56b684ba7604cdb60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a message to the server via TCP.  <a href="#a6c56eb3350af36e56b684ba7604cdb60">More...</a><br /></td></tr>
 <tr class="separator:a6c56eb3350af36e56b684ba7604cdb60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba2aa0337ec1ee16efc6c1b19df2d92a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="networking_8h.html#aba2aa0337ec1ee16efc6c1b19df2d92a">network_read</a> (int maxlen, char *const buff)</td></tr>
-<tr class="memdesc:aba2aa0337ec1ee16efc6c1b19df2d92a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a message sent from the server via TCP.  <a href="#aba2aa0337ec1ee16efc6c1b19df2d92a">More...</a><br /></td></tr>
-<tr class="separator:aba2aa0337ec1ee16efc6c1b19df2d92a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a452c1ce9209a371b08301df0fb35b7aa"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="networking_8h.html#a452c1ce9209a371b08301df0fb35b7aa">network_read_char</a> ()</td></tr>
 <tr class="memdesc:a452c1ce9209a371b08301df0fb35b7aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a single char from the server.  <a href="#a452c1ce9209a371b08301df0fb35b7aa">More...</a><br /></td></tr>
 <tr class="separator:a452c1ce9209a371b08301df0fb35b7aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file provides an abstraction layer for the network connection to the morgenlichtd server. </p>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a93ddcb5fb0a63da36d0cf2067268bef2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a93ddcb5fb0a63da36d0cf2067268bef2">&sect;&nbsp;</a></span>MORGENLICHTD_PORT</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MORGENLICHTD_PORT&#160;&#160;&#160;1234</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The public port of morgenlichtd. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>choose a proper port :) </dd></dl>
-
-<p>Referenced by <a class="el" href="networking_8h.html#aef872c822cd6533165667d89134ac522">init_networking()</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="aef872c822cd6533165667d89134ac522"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef872c822cd6533165667d89134ac522">&sect;&nbsp;</a></span>init_networking()</h2>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="ae811a1f85c2bb44a14d73214e0e1b48d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae811a1f85c2bb44a14d73214e0e1b48d">&sect;&nbsp;</a></span>init_networking()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -145,52 +124,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="netw
           <td class="memname">int init_networking </td>
           <td>(</td>
           <td class="paramtype">const char *const&#160;</td>
-          <td class="paramname"><em>remote_host</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialise the required libraries and the TCP connection to the server. </p>
-<p>This must be called before using the other functions provided by this header.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">remote_host</td><td>The host name of the server</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>0 on success, or non-zero otherwise. </dd></dl>
-
-<p>References <a class="el" href="networking_8h.html#a93ddcb5fb0a63da36d0cf2067268bef2">MORGENLICHTD_PORT</a>.</p>
-
-<p>Referenced by <a class="el" href="protocol__utils_8h.html#adffc5503f5f4252925985ed3b9a5dac5">server_info()</a>.</p>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="networking_8h_aef872c822cd6533165667d89134ac522_icgraph.svg" width="276" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="aba2aa0337ec1ee16efc6c1b19df2d92a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba2aa0337ec1ee16efc6c1b19df2d92a">&sect;&nbsp;</a></span>network_read()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int network_read </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>maxlen</em>, </td>
+          <td class="paramname"><em>remote_host</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *const&#160;</td>
-          <td class="paramname"><em>buff</em>&#160;</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -200,15 +140,26 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="netw
       </table>
 </div><div class="memdoc">
 
-<p>Read a message sent from the server via TCP. </p>
+<p>Initialise the required libraries and the TCP connection to the server. </p>
+<p>This must be called before using the other functions provided by this header.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">maxlen</td><td>The length of the receiving buffer </td></tr>
-    <tr><td class="paramname">buff</td><td>The buffer in which to save the reply</td></tr>
+    <tr><td class="paramname">remote_host</td><td>The host name of the server </td></tr>
+    <tr><td class="paramname">port</td><td>The port of the server</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 on success, or non-zero otherwise. </dd></dl>
+
+<p>Referenced by <a class="el" href="protocol__utils_8h.html#abcc9f0aee09649afac92089027fcaf8c">alarm_add()</a>, <a class="el" href="protocol__utils_8h.html#a579298df3cc09a2b73fbe7172cff9621">alarm_basic_cmd()</a>, <a class="el" href="protocol__utils_8h.html#abbb1b92bcb4acb02653d3392866b99fc">alarm_list()</a>, and <a class="el" href="protocol__utils_8h.html#a5d206893e677c3fd59b8a39fa36525c4">server_info()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="networking_8h_ae811a1f85c2bb44a14d73214e0e1b48d_icgraph.svg" width="318" height="190"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -236,7 +187,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="netw
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="networking_8h_a452c1ce9209a371b08301df0fb35b7aa_icgraph.svg" width="472" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="networking_8h_a452c1ce9209a371b08301df0fb35b7aa_icgraph.svg" width="472" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -266,13 +218,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="netw
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 on success, or non-zero otherwise. </dd></dl>
 
-<p>Referenced by <a class="el" href="protocol__utils_8h.html#adffc5503f5f4252925985ed3b9a5dac5">server_info()</a>.</p>
+<p>Referenced by <a class="el" href="protocol__utils_8h.html#abcc9f0aee09649afac92089027fcaf8c">alarm_add()</a>, <a class="el" href="protocol__utils_8h.html#abbb1b92bcb4acb02653d3392866b99fc">alarm_list()</a>, and <a class="el" href="protocol__utils_8h.html#a5d206893e677c3fd59b8a39fa36525c4">server_info()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="networking_8h_a6c56eb3350af36e56b684ba7604cdb60_icgraph.svg" width="268" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="networking_8h_a6c56eb3350af36e56b684ba7604cdb60_icgraph.svg" width="268" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -280,7 +233,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="netw
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 19 2016 18:31:44 for Morgenlichtctl by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 23 2016 12:16:33 for Morgenlichtctl by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.12
 </small></address>

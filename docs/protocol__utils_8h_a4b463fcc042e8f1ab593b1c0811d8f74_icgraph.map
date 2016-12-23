@@ -1,3 +1,5 @@
 <map id="parse_response" name="parse_response">
-<area shape="rect" id="node2" href="$protocol__utils_8h.html#adffc5503f5f4252925985ed3b9a5dac5" title="Print out some basic info about a morgenlichtd server. " alt="" coords="177,5,272,32"/>
+<area shape="rect" id="node2" href="$protocol__utils_8h.html#abcc9f0aee09649afac92089027fcaf8c" title="Add a new alarm or update an existing one. " alt="" coords="179,5,270,32"/>
+<area shape="rect" id="node3" href="$protocol__utils_8h.html#abbb1b92bcb4acb02653d3392866b99fc" title="List all alarms on the server. " alt="" coords="181,56,268,83"/>
+<area shape="rect" id="node4" href="$protocol__utils_8h.html#a5d206893e677c3fd59b8a39fa36525c4" title="Print out some basic info about a morgenlichtd server. " alt="" coords="177,107,272,133"/>
 </map>

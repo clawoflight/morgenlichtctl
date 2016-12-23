@@ -1,5 +1,5 @@
 <map id="morgenlichtctl.c" name="morgenlichtctl.c">
-<area shape="rect" id="node2" href="$cli_8h.html" title="This file describes the command&#45;line parameters for morgenlichtctl. " alt="" coords="202,80,251,107"/>
-<area shape="rect" id="node6" href="$protocol__utils_8h.html" title="This file provides helpers for common protocol functionality and basic queries. " alt="" coords="333,80,456,107"/>
-<area shape="rect" id="node7" href="$networking_8h.html" title="This file provides an abstraction layer for the network connection to the morgenlichtd server..." alt="" coords="341,155,448,181"/>
+<area shape="rect" id="node2" href="$cli_8h.html" title="This file describes the command&#45;line parameters for morgenlichtctl. " alt="" coords="199,80,249,107"/>
+<area shape="rect" id="node6" href="$protocol__utils_8h.html" title="This file provides helpers for common protocol functionality and basic queries. " alt="" coords="563,80,685,107"/>
+<area shape="rect" id="node7" href="$networking_8h.html" title="This file provides an abstraction layer for the network connection to the morgenlichtd server..." alt="" coords="453,155,560,181"/>
 </map>

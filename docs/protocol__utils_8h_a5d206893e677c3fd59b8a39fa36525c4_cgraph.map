@@ -1,0 +1,7 @@
+<map id="server_info" name="server_info">
+<area shape="rect" id="node2" href="$networking_8h.html#ae811a1f85c2bb44a14d73214e0e1b48d" title="Initialise the required libraries and the TCP connection to the server. " alt="" coords="149,5,271,32"/>
+<area shape="rect" id="node3" href="$networking_8h.html#a6c56eb3350af36e56b684ba7604cdb60" title="Send a message to the server via TCP. " alt="" coords="153,56,267,83"/>
+<area shape="rect" id="node4" href="$protocol__utils_8h.html#a4b463fcc042e8f1ab593b1c0811d8f74" title="Read and parse a response from the server. " alt="" coords="148,107,272,133"/>
+<area shape="rect" id="node6" href="$networking_8h.html#aed9a5ef41373d2bee0c1366e70c088a7" title="Close the TCP connection if it is still active, then de&#45;initialize the used libraries. " alt="" coords="327,157,460,184"/>
+<area shape="rect" id="node5" href="$networking_8h.html#a452c1ce9209a371b08301df0fb35b7aa" title="Read a single char from the server. " alt="" coords="320,107,467,133"/>
+</map>

@@ -60,6 +60,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">protocol_utils.h File Reference</div>  </div>
@@ -70,35 +72,265 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="networking_8h_source.html">networking.h</a>&quot;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for protocol_utils.h:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="protocol__utils_8h__incl.svg" width="222" height="187"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="protocol__utils_8h__incl.svg" width="100%" height="440"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="protocol__utils_8h__dep__incl.svg" width="138" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="protocol__utils_8h__dep__incl.svg" width="138" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 </div>
 <p><a href="protocol__utils_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a324218e3dbb9755d74d72bb4c81ff1d0"><td class="memItemLeft" align="right" valign="top"><a id="a324218e3dbb9755d74d72bb4c81ff1d0"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol__utils_8h.html#a324218e3dbb9755d74d72bb4c81ff1d0">AlarmCmd</a> { <b>AlarmEnable</b>, 
+<b>AlarmDisable</b>, 
+<b>AlarmDelete</b>
+ }<tr class="memdesc:a324218e3dbb9755d74d72bb4c81ff1d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Basic alarm commands. <br /></td></tr>
+</td></tr>
+<tr class="separator:a324218e3dbb9755d74d72bb4c81ff1d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a4b463fcc042e8f1ab593b1c0811d8f74"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol__utils_8h.html#a4b463fcc042e8f1ab593b1c0811d8f74">parse_response</a> (char *status, char **payload)</td></tr>
 <tr class="memdesc:a4b463fcc042e8f1ab593b1c0811d8f74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read and parse a response from the server.  <a href="#a4b463fcc042e8f1ab593b1c0811d8f74">More...</a><br /></td></tr>
 <tr class="separator:a4b463fcc042e8f1ab593b1c0811d8f74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adffc5503f5f4252925985ed3b9a5dac5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol__utils_8h.html#adffc5503f5f4252925985ed3b9a5dac5">server_info</a> (const char *const hostname)</td></tr>
-<tr class="memdesc:adffc5503f5f4252925985ed3b9a5dac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print out some basic info about a morgenlichtd server.  <a href="#adffc5503f5f4252925985ed3b9a5dac5">More...</a><br /></td></tr>
-<tr class="separator:adffc5503f5f4252925985ed3b9a5dac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d206893e677c3fd59b8a39fa36525c4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol__utils_8h.html#a5d206893e677c3fd59b8a39fa36525c4">server_info</a> (const char *const hostname, const int port)</td></tr>
+<tr class="memdesc:a5d206893e677c3fd59b8a39fa36525c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print out some basic info about a morgenlichtd server.  <a href="#a5d206893e677c3fd59b8a39fa36525c4">More...</a><br /></td></tr>
+<tr class="separator:a5d206893e677c3fd59b8a39fa36525c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a579298df3cc09a2b73fbe7172cff9621"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol__utils_8h.html#a579298df3cc09a2b73fbe7172cff9621">alarm_basic_cmd</a> (const char *const hostname, const int port, const char *const profile, enum <a class="el" href="protocol__utils_8h.html#a324218e3dbb9755d74d72bb4c81ff1d0">AlarmCmd</a> cmd)</td></tr>
+<tr class="memdesc:a579298df3cc09a2b73fbe7172cff9621"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform the most basic alarm commands.  <a href="#a579298df3cc09a2b73fbe7172cff9621">More...</a><br /></td></tr>
+<tr class="separator:a579298df3cc09a2b73fbe7172cff9621"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbb1b92bcb4acb02653d3392866b99fc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol__utils_8h.html#abbb1b92bcb4acb02653d3392866b99fc">alarm_list</a> (const char *const hostname, const int port)</td></tr>
+<tr class="memdesc:abbb1b92bcb4acb02653d3392866b99fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">List all alarms on the server.  <a href="#abbb1b92bcb4acb02653d3392866b99fc">More...</a><br /></td></tr>
+<tr class="separator:abbb1b92bcb4acb02653d3392866b99fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcc9f0aee09649afac92089027fcaf8c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol__utils_8h.html#abcc9f0aee09649afac92089027fcaf8c">alarm_add</a> (const char *const hostname, const int port, const char *const profile, const int hour, const int minute, const int second, const char *const active_days, const char *const color, const char *const sound)</td></tr>
+<tr class="memdesc:abcc9f0aee09649afac92089027fcaf8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new alarm or update an existing one.  <a href="#abcc9f0aee09649afac92089027fcaf8c">More...</a><br /></td></tr>
+<tr class="separator:abcc9f0aee09649afac92089027fcaf8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file provides helpers for common protocol functionality and basic queries. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="abcc9f0aee09649afac92089027fcaf8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcc9f0aee09649afac92089027fcaf8c">&sect;&nbsp;</a></span>alarm_add()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int alarm_add </td>
+          <td>(</td>
+          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramname"><em>hostname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramname"><em>profile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>hour</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>minute</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>second</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramname"><em>active_days</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramname"><em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramname"><em>sound</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add a new alarm or update an existing one. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hostname</td><td>The hostname of the server </td></tr>
+    <tr><td class="paramname">port</td><td>The port of the server </td></tr>
+    <tr><td class="paramname">profile</td><td>The alarm profile to create or overwrite </td></tr>
+    <tr><td class="paramname">hour</td><td>The trigger hour </td></tr>
+    <tr><td class="paramname">minute</td><td>The trigger minute </td></tr>
+    <tr><td class="paramname">second</td><td>The trigger second </td></tr>
+    <tr><td class="paramname">active_days</td><td>The days on which the profile is active </td></tr>
+    <tr><td class="paramname">color</td><td>The color profile </td></tr>
+    <tr><td class="paramname">sound</td><td>The sound file</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success, or non-zero otherwise. </dd></dl>
+
+<p>References <a class="el" href="networking_8h.html#ae811a1f85c2bb44a14d73214e0e1b48d">init_networking()</a>, <a class="el" href="networking_8h.html#a6c56eb3350af36e56b684ba7604cdb60">network_write()</a>, <a class="el" href="protocol__utils_8h.html#a4b463fcc042e8f1ab593b1c0811d8f74">parse_response()</a>, and <a class="el" href="networking_8h.html#aed9a5ef41373d2bee0c1366e70c088a7">term_networking()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="protocol__utils_8h_abcc9f0aee09649afac92089027fcaf8c_cgraph.svg" width="468" height="190"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a579298df3cc09a2b73fbe7172cff9621"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a579298df3cc09a2b73fbe7172cff9621">&sect;&nbsp;</a></span>alarm_basic_cmd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int alarm_basic_cmd </td>
+          <td>(</td>
+          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramname"><em>hostname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramname"><em>profile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">enum <a class="el" href="protocol__utils_8h.html#a324218e3dbb9755d74d72bb4c81ff1d0">AlarmCmd</a>&#160;</td>
+          <td class="paramname"><em>cmd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Perform the most basic alarm commands. </p>
+<p>These only require the profile name as argument and return success or failure, which makes them specially simple to implement.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hostname</td><td>The hostname of the server </td></tr>
+    <tr><td class="paramname">port</td><td>The port of the server </td></tr>
+    <tr><td class="paramname">profile</td><td>The alarm profile to act upon </td></tr>
+    <tr><td class="paramname">cmd</td><td>The command to execute</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success, or non-zero otherwise. </dd></dl>
+
+<p>References <a class="el" href="networking_8h.html#ae811a1f85c2bb44a14d73214e0e1b48d">init_networking()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="protocol__utils_8h_a579298df3cc09a2b73fbe7172cff9621_cgraph.svg" width="318" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="abbb1b92bcb4acb02653d3392866b99fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbb1b92bcb4acb02653d3392866b99fc">&sect;&nbsp;</a></span>alarm_list()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int alarm_list </td>
+          <td>(</td>
+          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramname"><em>hostname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>List all alarms on the server. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hostname</td><td>The hostname of the server </td></tr>
+    <tr><td class="paramname">port</td><td>The port of the server</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success, or non-zero otherwise. </dd></dl>
+<p>Print the alarm</p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>: make this pretty, yet work decently with many alarms. </dd></dl>
+
+<p>References <a class="el" href="networking_8h.html#ae811a1f85c2bb44a14d73214e0e1b48d">init_networking()</a>, <a class="el" href="networking_8h.html#a6c56eb3350af36e56b684ba7604cdb60">network_write()</a>, and <a class="el" href="protocol__utils_8h.html#a4b463fcc042e8f1ab593b1c0811d8f74">parse_response()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="protocol__utils_8h_abbb1b92bcb4acb02653d3392866b99fc_cgraph.svg" width="464" height="164"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
 <a id="a4b463fcc042e8f1ab593b1c0811d8f74"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4b463fcc042e8f1ab593b1c0811d8f74">&sect;&nbsp;</a></span>parse_response()</h2>
 
@@ -139,26 +371,28 @@ Functions</h2></td></tr>
 
 <p>References <a class="el" href="networking_8h.html#a452c1ce9209a371b08301df0fb35b7aa">network_read_char()</a>, and <a class="el" href="networking_8h.html#aed9a5ef41373d2bee0c1366e70c088a7">term_networking()</a>.</p>
 
-<p>Referenced by <a class="el" href="protocol__utils_8h.html#adffc5503f5f4252925985ed3b9a5dac5">server_info()</a>.</p>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+<p>Referenced by <a class="el" href="protocol__utils_8h.html#abcc9f0aee09649afac92089027fcaf8c">alarm_add()</a>, <a class="el" href="protocol__utils_8h.html#abbb1b92bcb4acb02653d3392866b99fc">alarm_list()</a>, and <a class="el" href="protocol__utils_8h.html#a5d206893e677c3fd59b8a39fa36525c4">server_info()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="protocol__utils_8h_a4b463fcc042e8f1ab593b1c0811d8f74_cgraph.svg" width="330" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="protocol__utils_8h_a4b463fcc042e8f1ab593b1c0811d8f74_cgraph.svg" width="330" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="protocol__utils_8h_a4b463fcc042e8f1ab593b1c0811d8f74_icgraph.svg" width="278" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="protocol__utils_8h_a4b463fcc042e8f1ab593b1c0811d8f74_icgraph.svg" width="278" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
 </div>
-<a id="adffc5503f5f4252925985ed3b9a5dac5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adffc5503f5f4252925985ed3b9a5dac5">&sect;&nbsp;</a></span>server_info()</h2>
+<a id="a5d206893e677c3fd59b8a39fa36525c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d206893e677c3fd59b8a39fa36525c4">&sect;&nbsp;</a></span>server_info()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -167,8 +401,18 @@ Functions</h2></td></tr>
           <td class="memname">int server_info </td>
           <td>(</td>
           <td class="paramtype">const char *const&#160;</td>
-          <td class="paramname"><em>hostname</em></td><td>)</td>
+          <td class="paramname"><em>hostname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -176,19 +420,21 @@ Functions</h2></td></tr>
 <p>Print out some basic info about a morgenlichtd server. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">hostname</td><td>The hostname of the server</td></tr>
+    <tr><td class="paramname">hostname</td><td>The hostname of the server </td></tr>
+    <tr><td class="paramname">port</td><td>The port of the server</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 on success, or non-zero otherwise. </dd></dl>
 
-<p>References <a class="el" href="networking_8h.html#aef872c822cd6533165667d89134ac522">init_networking()</a>, <a class="el" href="networking_8h.html#a6c56eb3350af36e56b684ba7604cdb60">network_write()</a>, <a class="el" href="protocol__utils_8h.html#a4b463fcc042e8f1ab593b1c0811d8f74">parse_response()</a>, and <a class="el" href="networking_8h.html#aed9a5ef41373d2bee0c1366e70c088a7">term_networking()</a>.</p>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+<p>References <a class="el" href="networking_8h.html#ae811a1f85c2bb44a14d73214e0e1b48d">init_networking()</a>, <a class="el" href="networking_8h.html#a6c56eb3350af36e56b684ba7604cdb60">network_write()</a>, <a class="el" href="protocol__utils_8h.html#a4b463fcc042e8f1ab593b1c0811d8f74">parse_response()</a>, and <a class="el" href="networking_8h.html#aed9a5ef41373d2bee0c1366e70c088a7">term_networking()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="protocol__utils_8h_adffc5503f5f4252925985ed3b9a5dac5_cgraph.svg" width="472" height="190"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="protocol__utils_8h_a5d206893e677c3fd59b8a39fa36525c4_cgraph.svg" width="472" height="190"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -196,7 +442,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 19 2016 18:31:44 for Morgenlichtctl by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 23 2016 12:16:33 for Morgenlichtctl by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.12
 </small></address>

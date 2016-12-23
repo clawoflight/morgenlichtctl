@@ -9,47 +9,47 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 136)">
 <title>networking.h</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-136 169.5,-136 169.5,4 -4,4"/>
-<!-- Node2 -->
-<g id="node1" class="node"><title>Node2</title>
+<!-- Node9 -->
+<g id="node1" class="node"><title>Node9</title>
 <polygon fill="#bfbfbf" stroke="black" points="32,-112.5 32,-131.5 112,-131.5 112,-112.5 32,-112.5"/>
 <text text-anchor="middle" x="72" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">networking.h</text>
 </g>
-<!-- Node3 -->
-<g id="node2" class="node"><title>Node3</title>
+<!-- Node10 -->
+<g id="node2" class="node"><title>Node10</title>
 <g id="a_node2"><a xlink:href="alarm_8h.html" target="_top" xlink:title="Implements the client&#45;side of the MorgenLicht alarm protocol. ">
 <polygon fill="white" stroke="black" points="0,-56.5 0,-75.5 54,-75.5 54,-56.5 0,-56.5"/>
 <text text-anchor="middle" x="27" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">alarm.h</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node3 -->
-<g id="edge1" class="edge"><title>Node2&#45;&gt;Node3</title>
+<!-- Node9&#45;&gt;Node10 -->
+<g id="edge1" class="edge"><title>Node9&#45;&gt;Node10</title>
 <path fill="none" stroke="midnightblue" d="M57.9533,-104.144C50.1131,-94.7357 40.6705,-83.4046 34.2926,-75.7511"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="55.4785,-106.641 64.5692,-112.083 60.8561,-102.16 55.4785,-106.641"/>
 </g>
-<!-- Node4 -->
-<g id="node3" class="node"><title>Node4</title>
+<!-- Node11 -->
+<g id="node3" class="node"><title>Node11</title>
 <g id="a_node3"><a xlink:href="protocol__utils_8h.html" target="_top" xlink:title="This file provides helpers for common protocol functionality and basic queries. ">
 <polygon fill="white" stroke="black" points="72,-56.5 72,-75.5 164,-75.5 164,-56.5 72,-56.5"/>
 <text text-anchor="middle" x="118" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">protocol_utils.h</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node4 -->
-<g id="edge2" class="edge"><title>Node2&#45;&gt;Node4</title>
+<!-- Node9&#45;&gt;Node11 -->
+<g id="edge2" class="edge"><title>Node9&#45;&gt;Node11</title>
 <path fill="none" stroke="midnightblue" d="M86.114,-104.431C94.176,-94.9673 103.959,-83.4827 110.545,-75.7511"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="83.4163,-102.201 79.596,-112.083 88.745,-106.74 83.4163,-102.201"/>
 </g>
-<!-- Node5 -->
-<g id="node4" class="node"><title>Node5</title>
+<!-- Node12 -->
+<g id="node4" class="node"><title>Node12</title>
 <g id="a_node4"><a xlink:href="morgenlichtctl_8c.html" target="_top" xlink:title="The primary file. ">
 <polygon fill="white" stroke="black" points="70.5,-0.5 70.5,-19.5 165.5,-19.5 165.5,-0.5 70.5,-0.5"/>
 <text text-anchor="middle" x="118" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">morgenlichtctl.c</text>
 </a>
 </g>
 </g>
-<!-- Node4&#45;&gt;Node5 -->
-<g id="edge3" class="edge"><title>Node4&#45;&gt;Node5</title>
+<!-- Node11&#45;&gt;Node12 -->
+<g id="edge3" class="edge"><title>Node11&#45;&gt;Node12</title>
 <path fill="none" stroke="midnightblue" d="M118,-45.8045C118,-36.9102 118,-26.7798 118,-19.7511"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="114.5,-46.083 118,-56.083 121.5,-46.083 114.5,-46.083"/>
 </g>

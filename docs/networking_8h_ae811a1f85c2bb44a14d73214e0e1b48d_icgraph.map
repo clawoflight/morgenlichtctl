@@ -1,0 +1,6 @@
+<map id="init_networking" name="init_networking">
+<area shape="rect" id="node2" href="$protocol__utils_8h.html#abcc9f0aee09649afac92089027fcaf8c" title="Add a new alarm or update an existing one. " alt="" coords="199,5,289,32"/>
+<area shape="rect" id="node3" href="$protocol__utils_8h.html#a579298df3cc09a2b73fbe7172cff9621" title="Perform the most basic alarm commands. " alt="" coords="176,56,312,83"/>
+<area shape="rect" id="node4" href="$protocol__utils_8h.html#abbb1b92bcb4acb02653d3392866b99fc" title="List all alarms on the server. " alt="" coords="201,107,287,133"/>
+<area shape="rect" id="node5" href="$protocol__utils_8h.html#a5d206893e677c3fd59b8a39fa36525c4" title="Print out some basic info about a morgenlichtd server. " alt="" coords="197,157,291,184"/>
+</map>
