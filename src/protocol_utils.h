@@ -35,10 +35,11 @@ int parse_response(char* status, char** payload);
  * Print out some basic info about a morgenlichtd server.
  *
  * @param  hostname The hostname of the server
+ * @param  port     The port of the server
  *
  * @return 0 on success, or non-zero otherwise.
  */
-int server_info(const char *const hostname);
+int server_info(const char *const hostname, const int port);
 
 /**
  * Perform the most basic alarm commands.
@@ -47,26 +48,29 @@ int server_info(const char *const hostname);
  * which makes them specially simple to implement.
  *
  * @param  hostname The hostname of the server
+ * @param  port     The port of the server
  * @param  profile  The alarm profile to act upon
  * @param  cmd      The command to execute
  *
  * @return 0 on success, or non-zero otherwise.
  */
-int alarm_basic_cmd(const char *const hostname, const char *const profile, enum AlarmCmd cmd);
+int alarm_basic_cmd(const char *const hostname, const int port, const char *const profile, enum AlarmCmd cmd);
 
 /**
  * List all alarms on the server.
  *
  * @param  hostname The hostname of the server
+ * @param  port     The port of the server
  *
  * @return 0 on success, or non-zero otherwise.
  */
-int alarm_list(const char *const hostname);
+int alarm_list(const char *const hostname, const int port);
 
 /**
  * Add a new alarm or update an existing one.
  *
  * @param  hostname    The hostname of the server
+ * @param  port        The port of the server
  * @param  profile     The alarm profile to create or overwrite
  * @param  hour        The trigger hour
  * @param  minute      The trigger minute
@@ -77,7 +81,7 @@ int alarm_list(const char *const hostname);
  *
  * @return 0 on success, or non-zero otherwise.
  */
-int alarm_add(const char *const hostname, const char* const profile,
+int alarm_add(const char *const hostname, const int port, const char* const profile,
     const int hour, const int minute, const int second,
     const char* const active_days, const char* const color, const char* const sound);
 

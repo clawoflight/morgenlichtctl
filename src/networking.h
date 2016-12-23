@@ -13,17 +13,16 @@
 #include <netinet/in.h>
 #include <netdb.h>
 
-#define MORGENLICHTD_PORT 4242 ///< The public port of morgenlichtd @todo choose a proper port :)
-
 /**
  * Initialise the required libraries and the TCP connection to the server.
  * This must be called before using the other functions provided by this header.
  *
  * @param  remote_host The host name of the server
+ * @param  port        The port of the server
  *
  * @return 0 on success, or non-zero otherwise.
  */
-int init_networking(const char* const remote_host);
+int init_networking(const char* const remote_host, const int port);
 
 
 /**

@@ -63,6 +63,9 @@ morgenlichtctl alarm add 06:30:00 -n "my alarm" -d MonWedFri
 MORGENLICHT_SERVER
 : Override "localhost" as the server to use.
 
+MORGENLICHT_PORT
+: Override 4242 as the port to use.
+
 # AUTHORS
 Written by Bennett Piater and Andreas Postel.
 

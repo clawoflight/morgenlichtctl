@@ -2,7 +2,7 @@
 
 static int connection; ///< The TCP socket of the server
 
-int init_networking(const char* const remote_host)
+int init_networking(const char* const remote_host, const int port)
 {
     // Create a new socket
     connection = socket(AF_INET, SOCK_STREAM, 0);
@@ -22,11 +22,11 @@ int init_networking(const char* const remote_host)
     bcopy((char *)server->h_addr,
          (char *)&serv_addr.sin_addr.s_addr,
          server->h_length);
-    serv_addr.sin_port = htons(MORGENLICHTD_PORT);
+    serv_addr.sin_port = htons(port);
 
     // Connect to the server
     if (connect(connection, (struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0) {
-        fprintf(stderr, "Could not connect to %s\n", remote_host);
+        fprintf(stderr, "Could not connect to %s:%d\n", remote_host, port);
         return 1;
     }
 

@@ -52,8 +52,13 @@ int main(int argc, char *argv[])
     }
 
     char* hostname;
+    char* env_port;
+    int port;
     if ((hostname = getenv("MORGENLICHT_SERVER")) == NULL)
         hostname = "localhost";
+    if ((env_port = getenv("MORGENLICHT_PORT")) == NULL
+       || (port = atoi(env_port)) == 0)
+        port = 4242;
 
     /* Do the actual parsing and count the resulting errors */
     arg_errors0 = arg_parse(argc, argv, argtable0);
@@ -101,19 +106,19 @@ int main(int argc, char *argv[])
         }
     }
     else if (arg_errors1 == 0)
-        status = alarm_list(hostname);
+        status = alarm_list(hostname, port);
     else if (arg_errors2 == 0)
-        status = alarm_basic_cmd(hostname, *enable_alarm_name->sval, AlarmEnable);
+        status = alarm_basic_cmd(hostname, port, *enable_alarm_name->sval, AlarmEnable);
     else if (arg_errors3 == 0)
-        status = alarm_basic_cmd(hostname, *disable_alarm_name->sval, AlarmDisable);
+        status = alarm_basic_cmd(hostname, port, *disable_alarm_name->sval, AlarmDisable);
     else if (arg_errors4 == 0)
-        status = alarm_add(hostname, *alarm_name->sval,
+        status = alarm_add(hostname, port, *alarm_name->sval,
            alarm_time->tmval->tm_hour, alarm_time->tmval->tm_min, alarm_time->tmval->tm_sec,
            *days->sval, *color_profile->sval, *sound_file->sval);
     else if (arg_errors5 == 0)
-        status = server_info(hostname);
+        status = server_info(hostname, port);
     else if (arg_errors6 == 0)
-        status = alarm_basic_cmd(hostname, *delete_alarm_name->sval, AlarmDelete);
+        status = alarm_basic_cmd(hostname, port, *delete_alarm_name->sval, AlarmDelete);
 
     // No command was correct: show the appropriate error message.
     else {

@@ -86,9 +86,9 @@ int parse_response(char* status, char** payload)
     return 0;
 }
 
-int server_info(const char *const hostname)
+int server_info(const char *const hostname, const int port)
 {
-    if (init_networking(hostname))
+    if (init_networking(hostname, port))
         return 1;
 
     /* Prepare the request */
@@ -153,9 +153,9 @@ int server_info(const char *const hostname)
     return return_value;
 }
 
-int alarm_basic_cmd(const char *const hostname, const char *const profile, enum AlarmCmd cmd)
+int alarm_basic_cmd(const char *const hostname, const int port, const char *const profile, enum AlarmCmd cmd)
 {
-    if (init_networking(hostname))
+    if (init_networking(hostname, port))
         return 1;
 
     // Determine the command
@@ -207,7 +207,7 @@ int alarm_basic_cmd(const char *const hostname, const char *const profile, enum 
     return return_value;
 }
 
-int alarm_add(const char* const hostname, const char *const profile,
+int alarm_add(const char* const hostname, const int port, const char *const profile,
     const int hour, const int minute, const int second,
     const char* const active_days, const char* const color, const char* const sound)
 {
@@ -216,7 +216,7 @@ int alarm_add(const char* const hostname, const char *const profile,
         fprintf(stderr, "If a sound file is specified, a color profile is mandatory!\n");
         return 1;
     }
-    if (init_networking(hostname))
+    if (init_networking(hostname, port))
         return 1;
 
     /* Prepare the request */
@@ -266,9 +266,9 @@ int alarm_add(const char* const hostname, const char *const profile,
     return return_value;
 }
 
-int alarm_list(const char *const hostname)
+int alarm_list(const char *const hostname, const int port)
 {
-    if (init_networking(hostname))
+    if (init_networking(hostname, port))
         return 1;
 
     /* Prepare the request */
