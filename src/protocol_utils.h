@@ -42,6 +42,22 @@ int parse_response(char* status, char** payload);
 int server_info(const char *const hostname, const int port);
 
 /**
+ * Directly set the LEDs.
+ *
+ * @param  hostname The hostname of the server
+ * @param  port     The port of the server
+ * @param  r1       Red channel 1 value
+ * @param  r2       Red channel 2 value
+ * @param  g1       Green channel 1 value
+ * @param  g2       Green channel 2 value
+ * @param  b1       Blue channel 1 value
+ * @param  b2       Blue channel 2 value
+ *
+ * @return 0 on success, or non-zero otherwise
+ */
+int leds_set(const char *const hostname, const int port, int r1, int r2, int g1, int g2, int b1, int b2);
+
+/**
  * Perform the most basic alarm commands.
  *
  * These only require the profile name as argument and return success or failure,

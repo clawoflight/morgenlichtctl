@@ -64,4 +64,15 @@ struct arg_rex* cmd5;
 struct arg_end* end5;
 int arg_errors5;
 
+/* SYNTAX: set-leds R1 R2 G1 G2 B1 B2 */
+struct arg_rex* cmd7;
+struct arg_int* led_r1;
+struct arg_int* led_r2;
+struct arg_int* led_g1;
+struct arg_int* led_g2;
+struct arg_int* led_b1;
+struct arg_int* led_b2;
+struct arg_end* end7;
+int arg_errors7;
+
 #endif // MORGENLICHTCTL_CLI_H

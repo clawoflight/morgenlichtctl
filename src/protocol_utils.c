@@ -15,8 +15,9 @@
 #define REQ_ALRM_DIS "alarm-disable" ///< The alarm disable request
 #define REQ_ALRM_DEL "alarm-delete" ///< The alarm deletion request
 #define REQ_ALRM_LS "alarm-list" ///< The alarm list request
+#define REQ_LEDS_SET "leds-set" ///< The leds set request
 
-#define PROTOCOL_VERSION "1.0"
+#define PROTOCOL_VERSION "1.1"
 
 #define ANSI_BRIGHT_CYAN "\x1b[36;1m" ///< ANSI bright cyan excape code
 #define ANSI_RED "\x1b[31m" ///< ANSI dark red escape code
@@ -149,6 +150,47 @@ int server_info(const char *const hostname, const int port)
     }
 
     free(payload); // NOTE: Never forget this!
+    term_networking();
+    return return_value;
+}
+
+int leds_set(const char *const hostname, const int port, int r1, int r2, int g1, int g2, int b1, int b2)
+{
+    if (init_networking(hostname, port))
+        return 1;
+
+    /* Prepare the request */
+    char msg[200];
+    snprintf(msg, 200, SOH"%s"US""REQ_LEDS_SET""ETX""STX"%d"US"%d"US"%d"US"%d"US"%d"US"%d"ETX""EOT,
+        PROTOCOL_VERSION, r1, r2, g1, g2, b1, b2);
+
+    /* Send the request */
+    if (network_write(msg)) {
+        term_networking();
+        return 1;
+    }
+
+    /* Parse the response */
+    char ack_nack;
+    char* payload;
+    if (parse_response(&ack_nack, &payload)) {
+        term_networking();
+        return 1;
+    }
+
+    int return_value = 1;
+    if (ack_nack == *NAK) {
+        fprintf(stderr, "The server could not fulfill the request.\n");
+    } else if (ack_nack == *ACK) {
+        puts("Operation completed successfully.");
+        return_value = 0;
+    } else {
+        fprintf(stderr, "Illegal response: missing status code.\n");
+    }
+
+    /* Clean up */
+    if (payload != NULL)
+        free(payload);
     term_networking();
     return return_value;
 }

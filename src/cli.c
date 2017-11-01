@@ -38,4 +38,13 @@ void init_argtable()
 
     cmd5 = arg_rex1(NULL, NULL, "server-info", NULL, REG_ICASE, NULL);
     end5 = arg_end(15);
+
+    cmd7 = arg_rex1(NULL, NULL, "set-leds", NULL, REG_ICASE, NULL);
+    led_r1 = arg_int1(NULL, NULL, "R1", "Red channel 1 value (0-255)");
+    led_r2 = arg_int1(NULL, NULL, "R2", "Red channel 2 value (0-255)");
+    led_g1 = arg_int1(NULL, NULL, "G1", "Green channel 1 value (0-255)");
+    led_g2 = arg_int1(NULL, NULL, "G2", "Green channel 2 value (0-255)");
+    led_b1 = arg_int1(NULL, NULL, "B1", "Blue channel 1 value (0-255)");
+    led_b2 = arg_int1(NULL, NULL, "B2", "Blue channel 2 value (0-255)");
+    end7 = arg_end(15);
 }

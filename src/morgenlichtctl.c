@@ -37,6 +37,7 @@ int main(int argc, char *argv[])
     void* argtable4[] = {cmd4, cmd4b, alarm_time, alarm_name, days, color_profile, sound_file, end4};
     void* argtable5[] = {cmd5, end5};
     void* argtable6[] = {cmd6, cmd6b, delete_alarm_name, end6};
+    void* argtable7[] = {cmd7, led_r1, led_r2, led_g1, led_g2, led_b1, led_b2, end7};
 
     /* Check for problems */
     if (arg_nullcheck(argtable0) ||
@@ -45,7 +46,8 @@ int main(int argc, char *argv[])
         arg_nullcheck(argtable3) ||
         arg_nullcheck(argtable4) ||
         arg_nullcheck(argtable5) ||
-        arg_nullcheck(argtable6))
+        arg_nullcheck(argtable6) ||
+        arg_nullcheck(argtable7))
     {
         fprintf(stderr, "error: insufficient memory\n");
         exit(EXIT_FAILURE);
@@ -68,6 +70,7 @@ int main(int argc, char *argv[])
     arg_errors4 = arg_parse(argc, argv, argtable4);
     arg_errors5 = arg_parse(argc, argv, argtable5);
     arg_errors6 = arg_parse(argc, argv, argtable6);
+    arg_errors7 = arg_parse(argc, argv, argtable7);
 
     int status = EXIT_SUCCESS;
     /* Work and handle errors */
@@ -103,6 +106,10 @@ int main(int argc, char *argv[])
             printf("\n%s ", argv[0]);
             arg_print_syntax(stdout, argtable4, "\n");
             arg_print_glossary_gnu(stdout, argtable4);
+
+            printf("\n%s", argv[0]);
+            arg_print_syntax(stdout, argtable7, "\n");
+            arg_print_glossary_gnu(stdout, argtable7);
         }
     }
     else if (arg_errors1 == 0)
@@ -119,6 +126,8 @@ int main(int argc, char *argv[])
         status = server_info(hostname, port);
     else if (arg_errors6 == 0)
         status = alarm_basic_cmd(hostname, port, *delete_alarm_name->sval, AlarmDelete);
+    else if (arg_errors7 == 0)
+        status = leds_set(hostname, port, *led_r1->ival, *led_r2->ival, *led_g1->ival, *led_g2->ival, *led_b1->ival, *led_b2->ival);
 
     // No command was correct: show the appropriate error message.
     else {
@@ -130,6 +139,8 @@ int main(int argc, char *argv[])
             arg_print_errors(stderr, end2, argv[0]);
         else if (list->count > 0)
             arg_print_errors(stderr, end1, argv[0]);
+        else if (cmd7->count > 0)
+            arg_print_errors(stderr, end7, argv[0]);
 
         else { // morgenlichtctl was called without arguments
             fprintf(stderr, "usage: %s", argv[0]);
@@ -139,7 +150,7 @@ int main(int argc, char *argv[])
     }
 
     /* Clean up :) */
-    cleanup(6, argtable0, argtable1, argtable2, argtable3, argtable4, argtable5);
+    cleanup(8, argtable0, argtable1, argtable2, argtable3, argtable4, argtable5, argtable6, argtable7);
 
     return status;
 }
