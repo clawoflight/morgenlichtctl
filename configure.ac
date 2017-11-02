@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([morgenlichtctl], [0.6.1], [bennett@piater.name])
+AC_INIT([morgenlichtctl], [1.0], [bennett@piater.name])
 AC_CONFIG_SRCDIR([src/morgenlichtctl.c])
 AC_CONFIG_AUX_DIR(autotools)
 AM_INIT_AUTOMAKE
