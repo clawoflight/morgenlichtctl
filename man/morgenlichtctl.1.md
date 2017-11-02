@@ -16,6 +16,8 @@ morgenlichtctl - command-line client for morgenlichtd
 
 **morgenlichtctl** alarm add *HH:MM:SS* -n *ALARM* -d *DayDay* [-c *COLOR*] [-s *SOUND*]
 
+**morgenlichtctl** set-leds *R1* *R2* *G1* *G2* *B1* *B2*
+
 # DESCRIPTION
 Manage alarms on a **morgenlicht**(7) system.
 
@@ -45,6 +47,9 @@ enable|disable|delete *ALARM*
 
 -s, --sound=*SOUND*
 : The sound to play. If this is set, **--color** must be set as well!
+
+*R1* - *B2*
+: Color values in the range 0-255 for channels 1 and 2.
 
 # EXAMPLES
 Disable an alarm:

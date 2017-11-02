@@ -52,4 +52,13 @@ morgenlichtctl  alarm add <HH:MM:SS> -n <ALARM> -d DayDay [-c <COLOR>] [-s <SOUN
  -d, --days=DayDay         The weekdays at which the alarm is enabled. String of MonTueWedThuFriSatSun.
  -c, --color=<COLOR>       The color profile to use.
  -s, --sound=<SOUND>       The sound to play
+
+morgenlichtctl set-leds R1 R2 G1 G2 B1 B2
+ R1                        Red channel 1 value (0-255)
+ R2                        Red channel 2 value (0-255)
+ G1                        Green channel 1 value (0-255)
+ G2                        Green channel 2 value (0-255)
+ B1                        Blue channel 1 value (0-255)
+ B2                        Blue channel 2 value (0-255)
+
 ```
