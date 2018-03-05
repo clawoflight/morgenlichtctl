@@ -348,7 +348,7 @@ int alarm_list(const char *const hostname, const int port)
     while ((cur = strtok(NULL, RS)) != NULL) {
         char *name, *days, *color = NULL, *sound = NULL;
         int hour, sec, min, enabled;
-        if (sscanf(cur, "%d:%d:%d"US"%m[0-9a-zA-Z._ -]"US"%m[a-zA-Z]"US"%d"US"%m[0-9a-zA-Z._ -]"US"%m[0-9a-zA-Z._ -]",
+        if (sscanf(cur, "%d:%d:%d"US"%m[0-9a-zA-Z._/ -]"US"%m[a-zA-Z]"US"%d"US"%m[0-9a-zA-Z._ -]"US"%m[0-9a-zA-Z._ -]",
             &hour, &min, &sec, &name, &days, &enabled, &color, &sound) < 6) {
             fprintf(stderr, "Illegal response: invalid payload.\n");
             goto cleanup;
