@@ -17,7 +17,7 @@
 #define REQ_ALRM_LS "alarm-list" ///< The alarm list request
 #define REQ_LEDS_SET "leds-set" ///< The leds set request
 
-#define PROTOCOL_VERSION "1.1"
+#define PROTOCOL_VERSION "1.4"
 
 #define ANSI_BRIGHT_CYAN "\x1b[36;1m" ///< ANSI bright cyan excape code
 #define ANSI_RED "\x1b[31m" ///< ANSI dark red escape code
