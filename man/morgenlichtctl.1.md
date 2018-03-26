@@ -10,7 +10,7 @@ morgenlichtctl - command-line client for morgenlichtd
 
 **morgenlichtctl** server-info
 
-**morgenlichtctl** alarm list
+**morgenlichtctl** alarm list [--csv]
 
 **morgenlichtctl** alarm enable|disable|delete *ALARM*
 
@@ -29,6 +29,12 @@ Mandatory options for long options are mandatory for short options too.
 
 -v, --version
 : Print version and exit.
+
+list
+: List all alarms and their data
+
+--csv
+: Use machine-readable csv format
 
 enable|disable|delete *ALARM*
 : Enable, disable or delete an alarm.

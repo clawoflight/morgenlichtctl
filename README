@@ -35,7 +35,8 @@ morgenlichtctl  [-hv]
  -h, --help                Print help and exit.
  -v, --version             Print version and exit.
 
-morgenlichtctl  alarm list
+morgenlichtctl  alarm list [--csv]
+ --csv                     Use machine-readable csv format
 
 morgenlichtctl  alarm enable <ALARM>
  <ALARM>                   The alarm to enable
