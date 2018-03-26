@@ -4,11 +4,11 @@
 # $1: enabled or disabled
 _alarm_name() {
   if [[ "$1" == "enabled" ]]; then
-    _values 'enabled alarm name' $(src/morgenlichtctl alarm list --csv | tail -n +2 | grep Enabled | cut -d, -f 1)
+    _values 'enabled alarm name' $(morgenlichtctl alarm list --csv | tail -n +2 | grep Enabled | cut -d, -f 1)
   elif [[ "$1" == "disabled" ]]; then
-    _values 'disabled alarm name' $(src/morgenlichtctl alarm list --csv | tail -n +2 | grep Disabled | cut -d, -f 1)
+    _values 'disabled alarm name' $(morgenlichtctl alarm list --csv | tail -n +2 | grep Disabled | cut -d, -f 1)
   else
-    _values 'alarm name' $(src/morgenlichtctl alarm list --csv | tail -n +2 | cut -d, -f 1)
+    _values 'alarm name' $(morgenlichtctl alarm list --csv | tail -n +2 | cut -d, -f 1)
   fi
 }
 
