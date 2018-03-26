@@ -308,7 +308,7 @@ int alarm_add(const char* const hostname, const int port, const char *const prof
     return return_value;
 }
 
-int alarm_list(const char *const hostname, const int port)
+int alarm_list(const char *const hostname, const int port, const int machine_readable)
 {
     if (init_networking(hostname, port))
         return 1;
@@ -345,6 +345,9 @@ int alarm_list(const char *const hostname, const int port)
     /* Parse all the alarms and print them nicely */
     strtok(payload, RS);
     char* cur;
+    if (machine_readable)
+	puts("Name,Time,Status,Days,Colors,Sound");
+
     while ((cur = strtok(NULL, RS)) != NULL) {
         char *name, *days, *color = NULL, *sound = NULL;
         int hour, sec, min, enabled;
@@ -354,7 +357,12 @@ int alarm_list(const char *const hostname, const int port)
             goto cleanup;
         }
         /// Print the alarm @todo: make this pretty, yet work decently with many alarms.
-        printf("\nName:\t%s\nTime:\t%02d:%02d:%02d\nStatus:\t%s\nDays:\t[%s]\nColors:\t%s\nSound:\t %s\n",
+	if (machine_readable)
+            printf("%s,%02d:%02d:%02d,%s,%s,%s,%s\n",
+            name, hour, min, sec,
+            enabled ? "Enabled" : "Disabled",
+            days, color?color:"", sound?sound:"");
+	else printf("\nName:\t%s\nTime:\t%02d:%02d:%02d\nStatus:\t%s\nDays:\t[%s]\nColors:\t%s\nSound:\t %s\n",
             name, hour, min, sec,
             enabled ? ANSI_GREEN"Enabled"ANSI_RESET : ANSI_RED"Disabled"ANSI_RESET,
             days, color?color:"", sound?sound:"");

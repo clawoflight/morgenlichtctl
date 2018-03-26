@@ -75,12 +75,13 @@ int alarm_basic_cmd(const char *const hostname, const int port, const char *cons
 /**
  * List all alarms on the server.
  *
- * @param  hostname The hostname of the server
- * @param  port     The port of the server
+ * @param  hostname         The hostname of the server
+ * @param  port             The port of the server
+ * @param  machine_readable Whether to use a machine_readable representation
  *
  * @return 0 on success, or non-zero otherwise.
  */
-int alarm_list(const char *const hostname, const int port);
+int alarm_list(const char *const hostname, const int port, const int machine_readable);
 
 /**
  * Add a new alarm or update an existing one.

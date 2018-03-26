@@ -24,6 +24,7 @@ int arg_errors0;
 /* SYNTAX: alarm list */
 struct arg_rex* cmd1;
 struct arg_rex* list;
+struct arg_lit* csv;
 struct arg_end* end1;
 int arg_errors1;
 

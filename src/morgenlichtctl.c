@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 
     /* Create the alternative syntaxes */
     void* argtable0[] = {help, version, end0};
-    void* argtable1[] = {cmd1, list, end1};
+    void* argtable1[] = {cmd1, list, csv, end1};
     void* argtable2[] = {cmd2, cmd2b, enable_alarm_name, end2};
     void* argtable3[] = {cmd3, cmd3b, disable_alarm_name, end3};
     void* argtable4[] = {cmd4, cmd4b, alarm_time, alarm_name, days, color_profile, sound_file, end4};
@@ -113,7 +113,7 @@ int main(int argc, char *argv[])
         }
     }
     else if (arg_errors1 == 0)
-        status = alarm_list(hostname, port);
+        status = alarm_list(hostname, port, csv->count > 0);
     else if (arg_errors2 == 0)
         status = alarm_basic_cmd(hostname, port, *enable_alarm_name->sval, AlarmEnable);
     else if (arg_errors3 == 0)

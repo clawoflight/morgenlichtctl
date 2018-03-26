@@ -9,6 +9,7 @@ void init_argtable()
 
     cmd1 = arg_rex1(NULL, NULL, "alarm", NULL, REG_ICASE, NULL);
     list = arg_rex1(NULL, NULL, "list", NULL, REG_ICASE, NULL);
+    csv = arg_lit0(NULL, "csv", "Use machine-readable CSV format.");
     end1 = arg_end(15);
 
     cmd2 = arg_rex1(NULL, NULL, "alarm", NULL, REG_ICASE, NULL);
